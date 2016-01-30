@@ -13,7 +13,22 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teach Something!!" />
+        android:layout_centerHorizontal="true"
+        android:text="MAGIC" />
+    <EditText
+        android:id="@+id/edit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1"
+        android:hint = "Please enter your bank card password"/>
+    <Button
+        android:id="@+id/button1"
+        android:layout_alignRight="@id/edit1"
+        android:layout_below="@id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter"/>
 </RelativeLayout>
