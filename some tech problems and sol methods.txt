@@ -30,7 +30,8 @@ use http + jason or socket + jason to realize two basic functions:
 2). servers return data to client
 
 improvement:
-scalability-handle high concurrency: httpSQS + simpleDB, which can handle > 10k concurrent request and database read/write, but it is not necessary for our small-scale proj this quater...just for further improvement(like small uber...ovo)
+scalability-handle high concurrency: httpSQS + simpleDB, which can handle > 10k concurrent request and database read/write.
+but it is not necessary for our small-scale proj this quater...just for further improvement(like small uber...ovo)
  
 
 
