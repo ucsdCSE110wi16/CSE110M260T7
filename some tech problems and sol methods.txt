@@ -12,7 +12,7 @@ platform: java, android sdk, google map
 4). get the current location information with android location-info-service
 5). show the current location as an icon/mark on the map
 
-2. how to build android clients and servers£¿
+2. how to build android clients and servers?
 
 target: implement communication between servers and clients
 
