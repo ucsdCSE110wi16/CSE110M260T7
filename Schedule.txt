@@ -4,7 +4,7 @@ Objective : Create a carpool application which allows
 Drivers and Passengers select their own customer. 
 
 Week 6: Finish the Login system and interface, user info.
-       Updated new user story on graph.
+
 
 Week 7: Finish the map (only have map and return position when need), A board contains all the carpool information(see the jpg files on github.) 
 
@@ -13,6 +13,3 @@ Week 8: Chat and notification and other static fucntions
 Week 9: test and see what we can fix.
 
 Week 10: continue to test.
-
-
-
