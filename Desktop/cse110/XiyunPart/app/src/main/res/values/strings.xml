@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Menu_ui</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_drive_set">Drive_set</string>
+</resources>

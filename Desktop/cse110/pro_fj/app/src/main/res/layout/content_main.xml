@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="120dp"
+    android:layout_marginLeft="90dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.jem.test.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+
+    <TableRow>
+            <TextView
+            android:text="Username："
+                android:textColor="#0f0f0f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <EditText
+                android:background="#bebebe"
+            android:id="@+id/account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24px"
+            android:minWidth="220px"/>
+
+    </TableRow>
+
+    <TableRow android:layout_marginTop="40px">
+            <TextView
+            android:text="Password："
+                android:textColor="#0f0f0f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <EditText
+                android:background="#bebebe"
+            android:id="@+id/pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="220px"
+            android:textSize="24px"
+            android:inputType="textPassword"/>
+    </TableRow>
+
+    <TableRow android:layout_marginTop="50px">
+            <Button
+                android:layout_marginRight="10dp"
+                android:background="#87cefa"
+                android:id="@+id/login"
+            android:text="Log in"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+            <Button
+                android:background="#87cefa"
+            android:id="@+id/quit"
+            android:text="Register"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
+    </TableRow>
+
+</TableLayout>
+
