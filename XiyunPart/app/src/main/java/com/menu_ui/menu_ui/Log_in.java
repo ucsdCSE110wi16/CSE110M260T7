@@ -6,15 +6,36 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import LogIn.LogIn;
+import com.firebase.client.Firebase;
 
 public class Log_in extends AppCompatActivity {
+
+    private Firebase mref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        Firebase.setAndroidContext(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final EditText user_name = (EditText) findViewById(R.id.user_name);
+        final EditText pwd = (EditText) findViewById(R.id.pwd);
+        final Button logIn = (Button) findViewById(R.id.login);
+        Button register = (Button) findViewById(R.id.quit);
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogIn log = new LogIn(user_name.getText().toString(), pwd.getText().toString());
+                log.logIn();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
