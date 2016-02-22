@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import LogInSystem.LogIn;
-import LogInSystem.Register;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
