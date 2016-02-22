@@ -59,6 +59,11 @@ public class Log_in extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent k = new Intent(Log_in.this, Register.class);
+                startActivity(k);
+
+
                 mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
                 final String email = user_name.getText().toString();
                 final String password = pwd.getText().toString();
