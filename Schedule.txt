@@ -1,5 +1,13 @@
 Schedule: 
 
+
+Update 2/23:
+Trying to finish all the UI intent before demo. 
+and understanding the firebase(data storing and retrieving)
+
+have data part done before Monday.
+
+
 Objective : Create a carpool application which allows
 Drivers and Passengers select their own customer. 
 
