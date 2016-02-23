@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_drive_set">Drive_set</string>
     <string name="title_activity_log_in">Log_in</string>
+    <string name="title_activity_passenger_ui">passengerUI</string>
+    <color name="blue">#5e90af</color>
 </resources>

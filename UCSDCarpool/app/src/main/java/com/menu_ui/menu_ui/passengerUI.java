@@ -1,16 +1,17 @@
-package com.example.julia.jingwen;
-
+package com.menu_ui.menu_ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 
-
-public class Interface extends AppCompatActivity {
+public class passengerUI extends AppCompatActivity {
 
     private static final int NUM_PAGES = 5;
     private ViewPager mPager;
@@ -19,7 +20,7 @@ public class Interface extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interface);
+        setContentView(R.layout.activity_passenger_ui);
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         ViewPager mPager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter());
@@ -30,7 +31,7 @@ public class Interface extends AppCompatActivity {
     private class MyPagerAdapter extends PagerAdapter {
 
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         public boolean isViewFromObject(View view, Object o) {
@@ -55,9 +56,7 @@ public class Interface extends AppCompatActivity {
                 case 1:
                     resId = showSecondFragment();
                     break;
-                case 2:
-                    resId = showThirdFragment();
-                    break;
+
             }
             View view = inflater.inflate(resId, null);
             ((ViewPager) collection).addView(view, 0);
@@ -68,20 +67,16 @@ public class Interface extends AppCompatActivity {
 
     public int showFirstFragment(){
         int resId;
-        resId = R.layout.first_frag;
+        resId = R.layout.passenger_ui_firstfrag;
         return resId;
     }
     public int showSecondFragment(){
         int resId;
-        resId = R.layout.second_frag;
+        resId = R.layout.passenger_ui_secondfrag;
         return resId;
     }
-    public int showThirdFragment(){
-        int resId;
-        resId = R.layout.third_frag;
-        return resId;
-    }
-//flip page animation
+
+    //flip page animation
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
         private static final float MIN_ALPHA = 0.5f;
@@ -120,5 +115,7 @@ public class Interface extends AppCompatActivity {
             }
         }
     }
+
+
 
 }

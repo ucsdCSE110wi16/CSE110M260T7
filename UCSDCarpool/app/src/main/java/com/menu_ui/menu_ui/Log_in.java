@@ -48,13 +48,22 @@ public class Log_in extends AppCompatActivity {
                         startActivity(k);
 
                     }
+
                     @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
 
                     }
                 });
             }
+            //click login button jump to app main page
+            public void loginToApp(View view){
+                Intent intent = new Intent (Log_in.this, passengerUI.class);
+                startActivity(intent);
+
+            }
         });
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
