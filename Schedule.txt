@@ -1,7 +1,11 @@
 Schedule: 
 
+Updated 2/25
+Renewing the UI to the new interface which can be drag around the menu. 
 
-Update 2/23:
+
+ 
+Updated 2/23:
 Trying to finish all the UI intent before demo. 
 and understanding the firebase(data storing and retrieving)
 
