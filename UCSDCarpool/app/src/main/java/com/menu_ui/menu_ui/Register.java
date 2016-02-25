@@ -61,6 +61,17 @@ public class Register extends AppCompatActivity {
                 mRef.createUser(email, password, new Firebase.ResultHandler() {
                     @Override
                     public void onSuccess() {
+
+                        user us = new user(name, email, password);
+
+                        if(us.validate())
+                        {
+
+
+                        } else {
+
+                        }
+
                         Intent k = new Intent(Register.this, Menu_activity.class);
                         startActivity(k);
                     }
