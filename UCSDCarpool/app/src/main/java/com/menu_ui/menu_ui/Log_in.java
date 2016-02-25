@@ -71,23 +71,6 @@ public class Log_in extends AppCompatActivity {
 
                 Intent k = new Intent(Log_in.this, Register.class);
                 startActivity(k);
-
-
-                mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-                final String email = user_name.getText().toString();
-                final String password = pwd.getText().toString();
-
-                mRef.createUser(email, password, new Firebase.ResultHandler() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError(FirebaseError firebaseError) {
-
-                    }
-                });
             }
         });
 
