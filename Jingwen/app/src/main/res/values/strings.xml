@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Jingwen</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_display_login">Welcome to Carpool 1.0</string>
-    <string name="button_passengerActivity">show your active carpools</string>
-    <string name="button_driverActivity">show your active customers</string>
-    <color name="blue">#5e90af</color>
-</resources>
