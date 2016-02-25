@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!--set location-->
+    <TextView
+        android:id="@+id/text1"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Your Destination:"/>
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_below="@+id/text1"/>
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:layout_below="@+id/from"
+        />
+    <TextView
+        android:id="@+id/cur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/to"
+        android:layout_marginTop="20dp"
+        android:text="select location and display google map here"/>
+
+    <!--set date-->
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Your Carpool Date"
+        android:textStyle="bold"
+        android:layout_below="@+id/cur"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/text2"/>
+
+    <Button
+        android:id="@+id/btn_setDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="Set Date"
+        android:layout_below="@id/tv_date" />
+
+
+    <!--set time-->
+    <TextView
+        android:id="@+id/text3"
+        android:text="Set Your Carpool Time"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_setDate"
+        android:layout_marginTop="50dp"
+        />
+    <TextView
+        android:id="@+id/tv"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/text3"/>
+
+    <Button
+        android:id="@+id/btn_setTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="Set Time"
+        android:layout_below="@id/tv" />
+
+</RelativeLayout>
