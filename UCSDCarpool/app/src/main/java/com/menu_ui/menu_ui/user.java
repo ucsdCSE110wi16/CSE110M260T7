@@ -7,13 +7,11 @@ public class user {
 
     private String user_name;
     private String user_email;
-    private String user_password;
 
-    public user(String name, String email, String password)
+    public user(String name, String email)
     {
         this.user_name = name;
         this.user_email = email;
-        this.user_password = password;
     }
 
 
@@ -25,9 +23,6 @@ public class user {
         return user_email;
     }
 
-    public String getUser_password() {
-        return user_password;
-    }
 
     public boolean validate()
     {
@@ -37,11 +32,6 @@ public class user {
         }
 
         if(user_email == "")
-        {
-            return false;
-        }
-
-        if(user_password == "")
         {
             return false;
         }

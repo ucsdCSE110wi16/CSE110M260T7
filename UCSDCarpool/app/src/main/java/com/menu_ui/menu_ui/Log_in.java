@@ -44,7 +44,7 @@ public class Log_in extends AppCompatActivity {
                     public void onAuthenticated(AuthData authData) {
                         System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
 
-                        Intent k = new Intent(Log_in.this, Drive_set.class);
+                        Intent k = new Intent(Log_in.this, Menu_activity.class);
                         startActivity(k);
 
                     }

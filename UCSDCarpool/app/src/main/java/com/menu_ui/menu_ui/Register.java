@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 /**
  * Created by Jem on 2/21/16.
@@ -62,12 +64,30 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
 
-                        user us = new user(name, email, password);
+                        user us = new user(name, email);
 
                         if(us.validate())
                         {
+                            mRef.child("user_info").push().setValue(us);
 
+                           /* mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info");
 
+                            AuthData authData = mRef.getAuth();
+                            String uid = authData.getUid();
+
+                            mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info/" + uid);
+
+                            mRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    System.out.println(dataSnapshot.getValue());
+                                }
+
+                                @Override
+                                public void onCancelled(FirebaseError firebaseError) {
+
+                                }
+                            });*/
                         } else {
 
                         }
