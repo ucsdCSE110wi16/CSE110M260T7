@@ -17,6 +17,7 @@ import android.widget.Toast;
 import menu.materialDesign.activity.Drive_set;
 import menu.materialDesign.activity.FragmentDrawer;
 import menu.materialDesign.activity.FragmentEditSchedule;
+import menu.materialDesign.activity.FragmentHistory;
 import menu.materialDesign.activity.FragmentNotification;
 import menu.materialDesign.activity.HomeFragment;
 
@@ -97,6 +98,9 @@ public class MenuActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_modify_schedule);
                 break;
             case 3:
+                fragment = new FragmentHistory();
+                title = getString(R.string.title_history);
+            case 4:
                 fragment = new FragmentNotification();
                 title = getString(R.string.title_notifications);
             default:
