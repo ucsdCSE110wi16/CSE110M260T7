@@ -8,20 +8,24 @@
     <string name="nav_item_home">Home</string>
     <string name="nav_item_drive_set">Schedule Carpool</string>
     <string name="nav_item_edit_schedule">Edit Schedule</string>
+    <string name="nav_item_history">Travel History</string>
     <string name="nav_item_notifications">Notifications</string>
+
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>
         <item>@string/nav_item_drive_set</item>
         <item>@string/nav_item_edit_schedule</item>
+        <item>@string/nav_item_history</item>
         <item>@string/nav_item_notifications</item>
     </string-array>
+
     <string name="title_notifications">Notifications</string>
     <string name="title_modify_schedule">Edit Schedule</string>
     <string name="title_drive_set">Schedule Carpool</string>
     <string name="title_home">Home</string>
-    <string name="title_activity_history">history</string>
+    <string name="title_activity_history">Travel History</string>
     <string name="title_history">history</string>
 
 <!-- TODO: Remove or change this placeholder text -->

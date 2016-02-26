@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
         ViewPager pager = (ViewPager) view.findViewById(R.id.viewPager);
         ViewPager mPager = (ViewPager) view.findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter());
-        pager.setCurrentItem(2);
+        pager.setCurrentItem(0);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
     @Override
