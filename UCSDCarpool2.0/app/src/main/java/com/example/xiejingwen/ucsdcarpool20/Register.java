@@ -19,9 +19,6 @@ package com.example.xiejingwen.ucsdcarpool20;
         import com.firebase.client.FirebaseError;
         import com.firebase.client.ValueEventListener;
 
-        import java.util.HashMap;
-        import java.util.Map;
-
 /**
  * Created by Jem on 2/21/16.
  */
@@ -70,21 +67,33 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
 
-                        mRef.authWithPassword(email, password, new Firebase.AuthResultHandler(){
-                            @Override
-                            public void onAuthenticated(AuthData authData) {
-                                // Authentication just completed successfully :)
-                                Map<String, String> map = new HashMap<String, String>();
-                                map.put("user_email", email);
-                                map.put("user_name", password);
-                                mRef.child("user_info").child(authData.getUid()).setValue(map);
-                            }
-                            @Override
-                            public void onAuthenticationError(FirebaseError error) {
-                                // Something went wrong :(
-                            }
-                        });
-                        
+                        user us = new user(name, email);
+
+                        if(us.validate())
+                        {
+                            mRef.child("user_info").push().setValue(us);
+
+                           /* mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info");
+
+                            AuthData authData = mRef.getAuth();
+                            String uid = authData.getUid();
+
+                            mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info/" + uid);
+
+                            mRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    System.out.println(dataSnapshot.getValue());
+                                }
+
+                                @Override
+                                public void onCancelled(FirebaseError firebaseError) {
+
+                                }
+                            });*/
+                        } else {
+
+                        }
 
                         Intent k = new Intent(Register.this, MenuActivity.class);
                         startActivity(k);

@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.xiejingwen.ucsdcarpool20.R;
-import com.firebase.client.Firebase;
-
 /**
  * Created by yucheng on 2/28/16.
  */
@@ -22,8 +20,6 @@ public class ProfileFragment extends Fragment {
     private ViewPager mPager;
     private ViewPager pager;
     String[] labels = {"As a CUSTOM", "As a DRIVER"};
-
-    private Firebase mRef;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -96,17 +92,6 @@ public class ProfileFragment extends Fragment {
 
                 case 0:
                     resId = showFirstFragment();
-                    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-                    EditText user_password_update_custom = (EditText) getView().findViewById(R.id.user_password_update_custom);
-                    EditText user_email_update_custom = (EditText) getView().findViewById(R.id.user_email_update_custom);
-                    EditText user_gender_update_custom = (EditText) getView().findViewById(R.id.user_gender_update_custom);
-                    EditText user_ssn_update_custom = (EditText) getView().findViewById(R.id.user_ssn_update_custom);
-                    EditText user_address_update_custom = (EditText) getView().findViewById(R.id.user_address_update_custom);
-                    EditText user_introduce_update_custom = (EditText) getView().findViewById(R.id.user_introduce_update_custom);
-
-                    String uid = mRef.getAuth().getUid();
-                    //Firebase uInfo = new Firebase();
-
                     break;
                 case 1:
                     resId = showSecondFragment();
