@@ -1,4 +1,13 @@
 Schedule: 
+Updated 2/29
+Things left: 
+  Debug: App crashed when using map sometimes. 
+  UI part: several UI page for drivers.
+  Data part: setting up the schedule table, and solve the bug when get button in edit profile
+            ( it can not get the pointer right now). And the calculation and pairing of all the data.
+  Testing: We haven't started any test for espresso. 
+
+
 
 Updated 2/25
 Renewing the UI to the new interface which can be drag around the menu. 
