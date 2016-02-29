@@ -20,6 +20,7 @@ import menu.materialDesign.activity.FragmentEditSchedule;
 import menu.materialDesign.activity.FragmentHistory;
 import menu.materialDesign.activity.FragmentNotification;
 import menu.materialDesign.activity.HomeFragment;
+import menu.materialDesign.activity.ProfileFragment;
 
 
 public class MenuActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
@@ -103,6 +104,9 @@ public class MenuActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 4:
                 fragment = new FragmentNotification();
                 title = getString(R.string.title_notifications);
+            case 5:
+                fragment = new ProfileFragment();
+                title = getString(R.string.title_profile);
             default:
                 break;
         }
