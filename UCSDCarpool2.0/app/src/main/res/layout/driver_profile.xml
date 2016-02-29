@@ -74,14 +74,25 @@
             android:layout_gravity="center"
             android:hint="Address"/>
 
-        <EditText
-            android:id="@+id/user_introduce_update_driver"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="250dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="Self Introduce"/>
+            android:orientation="horizontal">
 
+            <Button
+                android:background="#87cefa"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"/>
+            <Button
+                android:background="#87cefa"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"/>
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
