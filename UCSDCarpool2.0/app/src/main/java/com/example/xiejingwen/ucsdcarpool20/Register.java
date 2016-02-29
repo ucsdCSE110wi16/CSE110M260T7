@@ -3,21 +3,24 @@ package com.example.xiejingwen.ucsdcarpool20;
 /**
  * Created by Yukana on 16/2/25.
  */
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.Snackbar;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-        import com.firebase.client.AuthData;
-        import com.firebase.client.DataSnapshot;
-        import com.firebase.client.Firebase;
-        import com.firebase.client.FirebaseError;
-        import com.firebase.client.ValueEventListener;
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Jem on 2/21/16.
@@ -67,33 +70,21 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
 
-                        user us = new user(name, email);
+                        mRef.authWithPassword(email, password, new Firebase.AuthResultHandler(){
+                            @Override
+                            public void onAuthenticated(AuthData authData) {
+                                // Authentication just completed successfully :)
+                                Map<String, String> map = new HashMap<String, String>();
+                                map.put("user_email", email);
+                                map.put("user_name", password);
+                                mRef.child("user_info").child(authData.getUid()).setValue(map);
+                            }
+                            @Override
+                            public void onAuthenticationError(FirebaseError error) {
+                                // Something went wrong :(
+                            }
+                        });
 
-                        if(us.validate())
-                        {
-                            mRef.child("user_info").push().setValue(us);
-
-                           /* mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info");
-
-                            AuthData authData = mRef.getAuth();
-                            String uid = authData.getUid();
-
-                            mRef = new Firebase("https://ucsdcarpool.firebaseio.com/user_info/" + uid);
-
-                            mRef.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    System.out.println(dataSnapshot.getValue());
-                                }
-
-                                @Override
-                                public void onCancelled(FirebaseError firebaseError) {
-
-                                }
-                            });*/
-                        } else {
-
-                        }
 
                         Intent k = new Intent(Register.this, MenuActivity.class);
                         startActivity(k);
