@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/home_profile"
+        android:background="#87cefa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"/>
+    <Button
+        android:id="@+id/home_Edit_Schedule"
+        android:background="#87cefa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit_Schedule"/>
+    <Button
+        android:id="@+id/home_Find_Schedule"
+        android:background="#87cefa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find_Schedule"/>
+    <Button
+        android:id="@+id/home_Notification"
+        android:background="#87cefa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notification"/>
+    <Button
+        android:id="@+id/home_main"
+        android:background="#87cefa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main"/>
+</LinearLayout>
