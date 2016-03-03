@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.example.jem.ucsdcarpool.menu">
+
+    <!--set location-->
+    <TextView
+        android:id="@+id/text1"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Your Destination:"/>
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_below="@+id/text1"/>
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:layout_below="@+id/from"
+        />
+    <fragment
+    android:id="@+id/map"
+    android:layout_below="@+id/to"
+    android:name="com.google.android.gms.maps.MapFragment"
+    android:layout_width="fill_parent"
+    android:layout_height="250dp"
+    />
+
+
+    <!--set date-->
+    <LinearLayout
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/map"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Your Date"
+                android:textStyle="bold"
+                android:layout_below="@+id/map"
+                android:layout_marginTop="50dp"/>
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/text2"/>
+
+            <Button
+                android:id="@+id/btn_setDate"
+                android:background="#87cefa"
+                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onButtonClicked"
+                android:text="Set Date"
+                android:layout_below="@id/tv_date"/>
+        </LinearLayout>
+
+
+
+        <!--set time-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text3"
+                android:text="Set Your Time"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                />
+            <TextView
+                android:id="@+id/tv"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/text3"/>
+
+            <Button
+                android:id="@+id/btn_setTime"
+                android:background="#87cefa"
+                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onButtonClicked"
+                android:text="Set Time"
+                android:layout_below="@id/tv" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

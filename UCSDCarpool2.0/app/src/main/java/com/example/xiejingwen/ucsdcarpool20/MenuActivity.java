@@ -1,5 +1,6 @@
 package com.example.xiejingwen.ucsdcarpool20;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,27 +24,13 @@ import menu.materialDesign.activity.HomeFragment;
 import menu.materialDesign.activity.ProfileFragment;
 
 
-public class MenuActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
+public class MenuActivity extends AppCompatActivity  {
 
-    private static String TAG = MenuActivity.class.getSimpleName();
-
-    private Toolbar mToolbar;
-    private FragmentDrawer drawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);//altered here
-
-        drawerFragment = (FragmentDrawer)
-                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
-        drawerFragment.setDrawerListener(this);
 
         // display the first navigation drawer view on app launch
         displayView(0);
@@ -77,10 +64,7 @@ public class MenuActivity extends AppCompatActivity implements FragmentDrawer.Fr
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onDrawerItemSelected(View view, int position) {
-        displayView(position);
-    }
+
 
     private void displayView(int position) {
         Fragment fragment = null;
@@ -102,11 +86,12 @@ public class MenuActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 fragment = new FragmentHistory();
                 title = getString(R.string.title_history);
             case 4:
+                Activity activity = new ProfileFragment();
+                title = getString(R.string.title_profile);
+            case 5:
                 fragment = new FragmentNotification();
                 title = getString(R.string.title_notifications);
-            case 5:
-                fragment = new ProfileFragment();
-                title = getString(R.string.title_profile);
+
             default:
                 break;
         }
