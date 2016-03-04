@@ -4,15 +4,18 @@ package com.example.jem.ucsdcarpool;
  * Created by Yukana on 16/2/25.
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -39,24 +42,46 @@ public class Log_in extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-                final String email = user_name.getText().toString();
-                final String password = pwd.getText().toString();
-                mRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
-                    @Override
-                    public void onAuthenticated(AuthData authData) {
-                        System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                if(user_name.getText().toString().equals("") ||
+                        pwd.getText().toString().equals("") )
+                {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please fill in all required information!";
+                    int duration = Toast.LENGTH_SHORT;
 
-                        Intent k = new Intent(Log_in.this, Menu.class);
-                        startActivity(k);
 
-                    }
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
+                    toast.show();
+                }else {
 
-                    @Override
-                    public void onAuthenticationError(FirebaseError firebaseError) {
+                    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
+                    final String email = user_name.getText().toString();
+                    final String password = pwd.getText().toString();
+                    mRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+                        @Override
+                        public void onAuthenticated(AuthData authData) {
+                            System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
 
-                    }
-                });
+                            Intent k = new Intent(Log_in.this, Menu.class);
+                            startActivity(k);
+
+                        }
+
+                        @Override
+                        public void onAuthenticationError(FirebaseError firebaseError) {
+                            String errMag = firebaseError.getMessage();
+                            Context context = getApplicationContext();
+                            CharSequence text = errMag;
+                            int duration = Toast.LENGTH_SHORT;
+
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 0, 0);
+                            toast.show();
+                        }
+                    });
+                }
             }
             //click login button jump to app main page
             public void loginToApp(View view){

@@ -1,12 +1,15 @@
 package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -49,32 +52,48 @@ public class Profile extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-                final String na = name.getText().toString();
-                final String i = id.getText().toString();
-                final String em = email.getText().toString();
-                final String ge = gender.getText().toString();
-                final String sn = ssn.getText().toString();
-                final String ad = address.getText().toString();
-                final String ph = phone.getText().toString();
-                final String zc = zipcode.getText().toString();
+                if(name.getText().toString().equals("") ||
+                        id.getText().toString().equals("") ||
+                        email.getText().toString().equals("")||
+                        gender.getText().toString().equals(""))
+                {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please fill in all required information!";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Firebase uRef = mRef.child("user_info");
-                String uid = mRef.getAuth().getUid().toString();
-                uRef = uRef.child(uid);
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("user_email", em);
-                map.put("user_name", na);
-                map.put("user_id", i);
-                map.put("user_gender", ge);
-                map.put("user_ssn", sn);
-                map.put("user_address", ad);
-                map.put("user_phone", ph);
-                map.put("user_zipcode", zc);
 
-                uRef.updateChildren(map);
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
+                    toast.show();
+                }else {
+                    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
+                    final String na = name.getText().toString();
+                    final String i = id.getText().toString();
+                    final String em = email.getText().toString();
+                    final String ge = gender.getText().toString();
+                    final String sn = ssn.getText().toString();
+                    final String ad = address.getText().toString();
+                    final String ph = phone.getText().toString();
+                    final String zc = zipcode.getText().toString();
+
+                    Firebase uRef = mRef.child("user_info");
+                    String uid = mRef.getAuth().getUid().toString();
+                    uRef = uRef.child(uid);
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("user_email", em);
+                    map.put("user_name", na);
+                    map.put("user_id", i);
+                    map.put("user_gender", ge);
+                    map.put("user_ssn", sn);
+                    map.put("user_address", ad);
+                    map.put("user_phone", ph);
+                    map.put("user_zipcode", zc);
+
+                    uRef.updateChildren(map);
+                }
             }
         });
+
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override

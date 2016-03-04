@@ -4,15 +4,18 @@ package com.example.jem.ucsdcarpool;
  * Created by Yukana on 16/2/25.
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -59,41 +62,66 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-
-                final String email = user_email.getText().toString();
-                final String password = user_pwd.getText().toString();
-                final String name = user_name.getText().toString();
-
-                mRef.createUser(email, password, new Firebase.ResultHandler() {
-                    @Override
-                    public void onSuccess() {
-
-                        mRef.authWithPassword(email, password, new Firebase.AuthResultHandler(){
-                            @Override
-                            public void onAuthenticated(AuthData authData) {
-                                // Authentication just completed successfully :)
-                                Map<String, String> map = new HashMap<String, String>();
-                                map.put("user_email", email);
-                                map.put("user_name", name);
-                                mRef.child("user_info").child(authData.getUid()).setValue(map);
-                            }
-                            @Override
-                            public void onAuthenticationError(FirebaseError error) {
-                                // Something went wrong :(
-                            }
-                        });
+                if(user_email.getText().toString().equals("") ||
+                        user_pwd.getText().toString().equals("") ||
+                        user_name.getText().toString().equals(""))
+                {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please fill in all required information!";
+                    int duration = Toast.LENGTH_SHORT;
 
 
-                        Intent k = new Intent(Register.this, Menu.class);
-                        startActivity(k);
-                    }
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
+                    toast.show();
+                }else {
+                    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
 
-                    @Override
-                    public void onError(FirebaseError firebaseError) {
+                    final String email = user_email.getText().toString();
+                    final String password = user_pwd.getText().toString();
+                    final String name = user_name.getText().toString();
 
-                    }
-                });
+                    mRef.createUser(email, password, new Firebase.ResultHandler() {
+                        @Override
+                        public void onSuccess() {
+
+                            mRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+                                @Override
+                                public void onAuthenticated(AuthData authData) {
+                                    // Authentication just completed successfully :)
+                                    Map<String, String> map = new HashMap<String, String>();
+                                    map.put("user_email", email);
+                                    map.put("user_name", name);
+                                    mRef.child("user_info").child(authData.getUid()).setValue(map);
+                                }
+
+                                @Override
+                                public void onAuthenticationError(FirebaseError error) {
+                                    // Something went wrong :(
+
+                                    String errMag = error.getMessage();
+                                    Context context = getApplicationContext();
+                                    CharSequence text = errMag;
+                                    int duration = Toast.LENGTH_SHORT;
+
+
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 0, 0);
+                                    toast.show();
+                                }
+                            });
+
+
+                            Intent k = new Intent(Register.this, Menu.class);
+                            startActivity(k);
+                        }
+
+                        @Override
+                        public void onError(FirebaseError firebaseError) {
+
+                        }
+                    });
+                }
             }
         });
 

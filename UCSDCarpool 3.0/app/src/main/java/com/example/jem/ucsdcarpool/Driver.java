@@ -1,12 +1,15 @@
 package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -47,25 +50,40 @@ public class Driver extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
-                final String dl = DriverLicense.getText().toString();
-                final String ed = ExpireDate.getText().toString();
-                final String ma = make.getText().toString();
-                final String ye = year.getText().toString();
-                final String co = color.getText().toString();
 
-                Firebase uRef = mRef.child("user_info");
-                String uid = mRef.getAuth().getUid().toString();
-                uRef = uRef.child(uid);
+                if(DriverLicense.getText().toString().equals("") ||
+                        ExpireDate.getText().toString().equals("") ||
+                        color.getText().toString().equals(""))
+                {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please fill in all required information!";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("driver_license", dl);
-                map.put("driver_expire_date", ed);
-                map.put("driver_car_make", ma);
-                map.put("driver_car_year", ye);
-                map.put("driver_car_color", co);
 
-                uRef.updateChildren(map);
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
+                    toast.show();
+                }else {
+                    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
+                    final String dl = DriverLicense.getText().toString();
+                    final String ed = ExpireDate.getText().toString();
+                    final String ma = make.getText().toString();
+                    final String ye = year.getText().toString();
+                    final String co = color.getText().toString();
+
+                    Firebase uRef = mRef.child("user_info");
+                    String uid = mRef.getAuth().getUid().toString();
+                    uRef = uRef.child(uid);
+
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("driver_license", dl);
+                    map.put("driver_expire_date", ed);
+                    map.put("driver_car_make", ma);
+                    map.put("driver_car_year", ye);
+                    map.put("driver_car_color", co);
+
+                    uRef.updateChildren(map);
+                }
             }
         });
         
