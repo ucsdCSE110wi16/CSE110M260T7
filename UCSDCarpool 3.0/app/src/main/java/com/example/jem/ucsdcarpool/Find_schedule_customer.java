@@ -1,8 +1,6 @@
 package com.example.jem.ucsdcarpool;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,12 +9,12 @@ import android.widget.Button;
 /**
  * Created by Jem on 3/2/16.
  */
-public class Find_schedule extends AppCompatActivity {
+public class Find_schedule_customer extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.find_schedule);
+        setContentView(R.layout.find_schedule_customer);
 
 
         //set activty content

@@ -19,6 +19,7 @@ public class Menu extends AppCompatActivity {
         Button mybutton2 = (Button) findViewById(R.id.home_Edit_Schedule);
         Button mybutton3 = (Button) findViewById(R.id.home_Find_Schedule);
         Button mybutton4 = (Button) findViewById(R.id.home_main);
+        Button mybutton5 = (Button) findViewById(R.id.home_Find_Schedule_Driver);
 
         mybutton1.setOnClickListener(new View.OnClickListener() {
 
@@ -44,7 +45,7 @@ public class Menu extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Find_schedule.class);
+                Intent intent = new Intent(Menu.this, Find_schedule_customer.class);
                 startActivity(intent);
             }
         });
@@ -54,6 +55,15 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, Passenger_ui.class);
+                startActivity(intent);
+            }
+        });
+
+        mybutton5.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Find_schedule_driver.class);
                 startActivity(intent);
             }
         });

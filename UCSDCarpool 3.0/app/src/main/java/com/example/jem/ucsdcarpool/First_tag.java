@@ -14,11 +14,11 @@ public class First_tag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.first_tag, container, false);
+        super.onCreate(savedInstanceState);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvFragFirst);
-        return v;
+        View layout = inflater.inflate(R.layout.first_tag, null);
+
+        return layout;
+
     }
-
-
 }

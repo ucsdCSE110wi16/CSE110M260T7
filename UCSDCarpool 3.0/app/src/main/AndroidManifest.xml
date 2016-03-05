@@ -81,11 +81,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".Find_schedule"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
             android:name=".Notification"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -97,6 +92,21 @@
 
         <activity
             android:name=".Passenger_ui"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Find_schedule_driver"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Schedule_Find_Schedule"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Find_schedule_customer"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
