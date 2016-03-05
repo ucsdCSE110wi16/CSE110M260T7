@@ -51,9 +51,9 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
             holder = (UserHolder) row.getTag();
         }
         Schedule schedule = data.get(position);
-        holder.textName.setText(schedule.getName());
-        holder.textAddress.setText(schedule.getAddress());
-        holder.textDetail.setText(schedule.getScheduledetail());
+        holder.textName.setText(schedule.getPassenger_name());
+        holder.textAddress.setText(schedule.getDestination());
+        holder.textDetail.setText(schedule.getMonth() + "/" + schedule.getDay() + "/" + schedule.getHour() + "/" + schedule.getMinute());
 
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
         });
 
         //TODO:make button dissapear/visible using the following code:
-        String s = schedule.getAddress();
+        String s = schedule.getDestination();
         if (s.equals("UCSD")){
             holder.displayD = (Button)row.findViewById(R.id.Display_Driver);
             holder.displayD.setVisibility(View.GONE);//make D INVISIBLE
