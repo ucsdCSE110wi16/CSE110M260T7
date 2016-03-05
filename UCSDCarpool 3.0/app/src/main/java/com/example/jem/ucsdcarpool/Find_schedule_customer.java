@@ -3,6 +3,7 @@ package com.example.jem.ucsdcarpool;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,7 +26,7 @@ public class Find_schedule_customer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DialogFragment newFragment = new TimePickFragment();
+                TimePickFragment newFragment = new TimePickFragment();
                 newFragment.show(getSupportFragmentManager(), "TimePicker");
 
             }
@@ -41,6 +42,8 @@ public class Find_schedule_customer extends AppCompatActivity {
         });
 
     }
+
+
 
 
 }
