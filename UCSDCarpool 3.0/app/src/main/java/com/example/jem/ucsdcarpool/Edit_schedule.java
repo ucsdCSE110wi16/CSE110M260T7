@@ -25,9 +25,6 @@ public class Edit_schedule extends Activity {
         /**
          * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
          */
-
-
-        /*
         userArray.add(new Schedule("Schedule name", "Schedule address", "Schedule Detail"));
         userArray.add(new Schedule("Morning Schedule", "UCSD", "drive info+data+time"));
         userArray.add(new Schedule("Afternoon Schedule", "UCSD", "drive info+data+time"));
@@ -35,10 +32,6 @@ public class Edit_schedule extends Activity {
         userArray.add(new Schedule("Monday Schedule", "UCSD", "drive info+data+time"));
         userArray.add(new Schedule("Holiday Schedule", "UCSD", "drive info+data+time"));
         userArray.add(new Schedule("Today Schedule", "UCSD", "drive info+data+time"));
-
-        */
-
-
         /**
          * set item into adapter
          */

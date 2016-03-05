@@ -48,10 +48,9 @@ public class Edit_schedule_adaptor extends ArrayAdapter<Schedule> {
             holder = (UserHolder) row.getTag();
         }
         Schedule schedule = data.get(position);
-
-        holder.textName.setText(schedule.getPassenger_name());
-        holder.textAddress.setText(schedule.getDestination());
-        holder.textDetail.setText(schedule.getMonth() + "/" + schedule.getDay() + "/" + schedule.getHour() + "/" + schedule.getMinute());
+        holder.textName.setText(schedule.getName());
+        holder.textAddress.setText(schedule.getAddress());
+        holder.textDetail.setText(schedule.getScheduledetail());
 
 //        holder.btnEdit.setOnClickListener(new OnClickListener() {
 //
