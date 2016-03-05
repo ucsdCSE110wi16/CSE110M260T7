@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+    android:id="@+id/DrivertextView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_alignParentTop="true"
+    android:text="Schedule Name"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+    android:id="@+id/DrivertextView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/DrivertextView1"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="80dp"
+    android:text="Address"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textSize="16sp" />
+
+
+    <Button
+    android:id="@+id/Driverbutton2"
+    android:layout_width="80dp"
+    android:layout_height="40dp"
+    android:layout_alignParentRight="true"
+    android:layout_marginTop="20dp"
+    android:background="#FF80AB"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:text="View Schedule"
+    android:shadowColor="#FF80AB" />
+
+
+
+    <TextView
+    android:id="@+id/DrivertextView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/DrivertextView2"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="80dp"
+    android:text="Schedule Detail" />
+
+</RelativeLayout>

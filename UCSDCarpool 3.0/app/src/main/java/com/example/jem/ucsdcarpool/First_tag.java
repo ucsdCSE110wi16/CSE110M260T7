@@ -12,13 +12,13 @@ import android.widget.TextView;
  */
 public class First_tag extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        View layout = inflater.inflate(R.layout.first_tag, null);
-
-        return layout;
-
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        View layout = inflater.inflate(R.layout.first_tag, null);
+//
+//        return layout;
+//
+//    }
 }
