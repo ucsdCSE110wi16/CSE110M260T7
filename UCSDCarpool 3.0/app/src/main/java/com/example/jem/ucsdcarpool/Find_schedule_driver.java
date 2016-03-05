@@ -22,38 +22,38 @@ import java.util.ArrayList;
  * Created by Jem on 3/3/16.
  */
 public class Find_schedule_driver extends Activity {
-}
 
-//        ListView userList;
-//        Find_schedule_driver_adaptor userAdapter;
-//        ArrayList<ScheduleDriver> userArray = new ArrayList<ScheduleDriver>();
-//
-//
-//@Override
-//protected void onCreate(Bundle savedInstanceState) {
-//    super.onCreate(savedInstanceState);
-//    setContentView(R.layout.edit_schedule);
-//
-//    /**
-//     * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
-//     */
-//    userArray.add(new ScheduleDriver("Schedule name", "Schedule address", "Schedule Detail"));
-//    userArray.add(new ScheduleDriver("Morning Schedule", "UCSD", "drive info+data+time"));
-//    userArray.add(new ScheduleDriver("Afternoon Schedule", "UCSD", "drive info+data+time"));
-//    userArray.add(new ScheduleDriver("Weekend Schedule", "UCSD", "drive info+data+time"));
-//    userArray.add(new ScheduleDriver("Monday Schedule", "UCSD", "drive info+data+time"));
-//    userArray.add(new ScheduleDriver("Holiday Schedule", "UCSD", "drive info+data+time"));
-//    userArray.add(new ScheduleDriver("Today Schedule", "UCSD", "drive info+data+time"));
-//    /**
-//     * set item into adapter
-//     */
-//    userAdapter = new Find_schedule_driver_adaptor(Find_schedule_driver.this, R.layout.find_schedule_driver_adaptor, userArray);
-//    userList = (ListView) findViewById(R.id.Driverlistview1);
-//    userList.setItemsCanFocus(false);
-//    userList.setAdapter(userAdapter);
-//    /**
-//     * get on item click listener
-//     */
+
+        ListView userList;
+        Find_schedule_driver_adaptor userAdapter;
+        ArrayList<ScheduleDriver> userArray = new ArrayList<ScheduleDriver>();
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.find_schedule_driver);
+
+    /**
+     * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
+     */
+    userArray.add(new ScheduleDriver("Schedule name", "Schedule address", "Schedule Detail"));
+    userArray.add(new ScheduleDriver("Morning Schedule", "UCSD", "drive info+data+time"));
+    userArray.add(new ScheduleDriver("Afternoon Schedule", "UCSD", "drive info+data+time"));
+    userArray.add(new ScheduleDriver("Weekend Schedule", "UCSD", "drive info+data+time"));
+    userArray.add(new ScheduleDriver("Monday Schedule", "UCSD", "drive info+data+time"));
+    userArray.add(new ScheduleDriver("Holiday Schedule", "UCSD", "drive info+data+time"));
+    userArray.add(new ScheduleDriver("Today Schedule", "UCSD", "drive info+data+time"));
+    /**
+     * set item into adapter
+     */
+    userAdapter = new Find_schedule_driver_adaptor(Find_schedule_driver.this, R.layout.find_schedule_driver_adaptor, userArray);
+    userList = (ListView) findViewById(R.id.Driverlistview1);
+    userList.setItemsCanFocus(false);
+    userList.setAdapter(userAdapter);
+    /**
+     * get on item click listener
+     */
 //    userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
 //        @Override
@@ -65,10 +65,10 @@ public class Find_schedule_driver extends Activity {
 //                    .show();
 //        }
 //    });
-//
-//}
-//
-//        }
+
+}
+
+        }
 
 
 

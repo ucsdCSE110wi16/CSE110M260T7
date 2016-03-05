@@ -2,6 +2,7 @@ package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by xiejingwen on 3/4/16.
  */
-public class Find_schedule_driver_adaptor extends ArrayAdapter<Schedule> {
+public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
     Context context;
     int layoutResourceId;
-    ArrayList<Schedule> data = new ArrayList<Schedule>();
+    ArrayList<ScheduleDriver> data = new ArrayList<ScheduleDriver>();
 
     public Find_schedule_driver_adaptor(Context context, int layoutResourceId,
-                                 ArrayList<Schedule> data) {
+                                 ArrayList<ScheduleDriver> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -49,7 +50,7 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<Schedule> {
         } else {
             holder = (UserHolder) row.getTag();
         }
-        Schedule schedule = data.get(position);
+        ScheduleDriver schedule = data.get(position);
         holder.textName.setText(schedule.getName());
         holder.textAddress.setText(schedule.getAddress());
         holder.textDetail.setText(schedule.getScheduledetail());
@@ -69,9 +70,13 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<Schedule> {
             @Override
             public void onClick(View v) {
                 // TODO Delete listview from firebase: write code here
-                Log.i("Delete Button Clicked", "**********");
-                Toast.makeText(context, "Delete button Clicked",
-                        Toast.LENGTH_LONG).show();
+//                Log.i("Delete Button Clicked", "**********");
+//                Toast.makeText(context, "Delete button Clicked",
+//                        Toast.LENGTH_LONG).show();
+                Log.i("View Button", "clicked");
+                Intent intent = new Intent(context,Find_schedule_driver_Display.class);
+                context.startActivity(intent);
+
             }
         });
 
