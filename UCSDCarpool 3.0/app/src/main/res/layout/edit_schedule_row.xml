@@ -6,83 +6,83 @@
     android:padding="5dp"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_alignParentTop="true"
-        android:text="Schedule Name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="80dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:text="Schedule Name"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="80dp"
-        android:text="Address"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_below="@+id/textView1"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginLeft="80dp"-->
+        <!--android:text="Address"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--android:textSize="16sp" />-->
 
+
+    <!--&lt;!&ndash;<Button&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/button1"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="80dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="40dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_alignParentTop="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="#FFFFFF"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:focusable="false"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:focusableInTouchMode="false"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="Edit Data"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="#C51162"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:shadowColor="#FF80AB"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>&ndash;&gt;-->
 
     <!--<Button-->
-        <!--android:id="@+id/button1"-->
+        <!--android:id="@+id/button2"-->
         <!--android:layout_width="80dp"-->
         <!--android:layout_height="40dp"-->
         <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:background="#FFFFFF"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:background="#FF80AB"-->
         <!--android:focusable="false"-->
         <!--android:focusableInTouchMode="false"-->
-        <!--android:text="Edit Data"-->
-        <!--android:textColor="#C51162"-->
+        <!--android:text="Delete"-->
         <!--android:shadowColor="#FF80AB"-->
+        <!--android:textColor="#C51162"-->
         <!--/>-->
+<!--&lt;!&ndash;display customer or Driver&ndash;&gt;-->
+    <!--<Button-->
+        <!--android:id="@+id/Display_Customer"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:text="C"-->
+        <!--android:background="@drawable/button"-->
+        <!--android:textSize="40dp"/>-->
+    <!--<Button-->
+        <!--android:id="@+id/Display_Driver"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="85dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:text="D"-->
+        <!--android:background="@drawable/button2"-->
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:background="#FF80AB"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:text="Delete"
-        android:shadowColor="#FF80AB"
-        android:textColor="#C51162"
-        />
-<!--display customer or Driver-->
-    <Button
-        android:id="@+id/Display_Customer"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:text="C"
-        android:background="@drawable/button"
-        android:textSize="40dp"/>
-    <Button
-        android:id="@+id/Display_Driver"
-        android:layout_width="80dp"
-        android:layout_height="85dp"
-        android:layout_alignParentLeft="true"
-        android:text="D"
-        android:background="@drawable/button2"
-
-        android:textSize="40dp"/>
+        <!--android:textSize="40dp"/>-->
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="80dp"
-        android:text="Schedule Detail" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_below="@+id/textView2"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginLeft="80dp"-->
+        <!--android:text="Schedule Detail" />-->
 
 </RelativeLayout>

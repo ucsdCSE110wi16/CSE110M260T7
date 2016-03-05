@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView1">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
     tools:context="com.example.jem.ucsdcarpool.passenger_ui">
 
     <TextView
@@ -15,43 +20,116 @@
         android:text="YOUR NEXT TRIP"
         android:gravity="center_vertical"
         android:textStyle="bold"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimary"
         android:textSize="40px" />
-    <!--display fragments from database-->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="340dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:fadingEdge="vertical"
-        />
+        android:background="@color/background"
+        android:layout_margin="5dp"
+        android:padding="10dp">
+        <!--Display date & time-->
+        <TextView
+            android:id="@+id/text0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: "
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/FIREBASE_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/text0"
+            android:text="null"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:id="@+id/text00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time: "
+            android:textColor="@color/colorPrimary"
+            android:layout_toRightOf="@+id/FIREBASE_Date" />
+        <TextView
+            android:id="@+id/FIREBASE_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="null"
+            android:layout_toRightOf="@+id/text00"/>
+
+
+        <!--destination-->
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text0"
+            android:text="Your Destination:"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/FIREBASE_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text0"
+            android:layout_toRightOf="@+id/text1"
+            android:text="null"
+            android:layout_marginLeft="10dp" />
+        <!--Pickup location-->
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:text="Pickup Location: "
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/FIREBASE_pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:layout_toRightOf="@+id/text2"
+            android:text="null"
+            android:layout_marginLeft="10dp" />
+
+        <!--TODO display map in fragment below-->
+        <!--<fragment-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="250dp"-->
+            <!--android:layout_below="@+id/text2"-->
+            <!--android:layout_marginTop="10dp">-->
+        <!--</fragment>-->
+
+
+    </RelativeLayout>
+
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TRAVEL HISTORY"
+        android:text="VIEW MORE TRIPS"
         android:gravity="center_vertical"
         android:textStyle="bold"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimary"
         android:textSize="40px"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center_horizontal"
-        android:background="#eeeeee">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="display history driver info,destination and date here"/>
+        android:background="@color/background"
+        android:padding="10dp">
+        <ListView
+            android:id="@+id/HomeListView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        </ListView>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
+</ScrollView>
