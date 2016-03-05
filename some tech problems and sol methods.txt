@@ -1,0 +1,37 @@
+initial author: zhp007
+
+1. how to build android app based on google map?
+
+target: get location info
+
+platform: java, android sdk, google map
+
+1). get google map API key
+2). put google map object into android 
+3). add map zoom component, map mode and adjustment of scaling ratio
+4). get the current location information with android location-info-service
+5). show the current location as an icon/mark on the map
+
+2. how to build android clients and servers?
+
+target: implement communication between servers and clients
+
+platform: 
+Java
+server: apache tomcat 6.X
+Struts2: for JSON transformation from servers to clients
+Database: 
+server-side: mysql(because it's free...), more powerful one is sql server
+client-side: light weight database is enough, use SQlite
+JSON package
+
+use http + jason or socket + jason to realize two basic functions:
+1). clients send request to servers
+2). servers return data to client
+
+improvement:
+scalability-handle high concurrency: httpSQS + simpleDB, which can handle > 10k concurrent request and database read/write.
+but it is not necessary for our small-scale proj this quater...just for further improvement(like small uber...ovo)
+ 
+
+

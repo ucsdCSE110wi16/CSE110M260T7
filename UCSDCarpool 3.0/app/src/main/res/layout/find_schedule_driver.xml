@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <LinearLayout
+       android:id="@+id/Find_Schedule_Driver"
+       android:orientation="vertical"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent">
+
+       <TextView
+           android:id="@+id/pick"
+           android:textSize="20sp"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="10dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Pick the schedule:"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/schedule1"
+        android:textSize="10sp"
+        android:layout_weight="0.8"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="schedule 1"
+        android:onClick="OnClickPop1"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/schedule2"
+        android:textSize="10sp"
+        android:layout_weight="0.8"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="schedule 2"
+        android:onClick="OnClickPop2"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/schedule3"
+                android:textSize="10sp"
+                android:layout_weight="0.8"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="schedule 3"
+                android:onClick="OnClickPop3"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/schedule4"
+                android:textSize="10sp"
+                android:layout_weight="0.8"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="schedule 4"
+                android:onClick="OnClickPop4"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/schedule5"
+                android:textSize="10sp"
+                android:layout_weight="0.8"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="schedule 5"
+                android:onClick="OnClickPop5"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/schedule6"
+                android:textSize="10sp"
+                android:layout_weight="0.8"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="schedule 6"
+                android:onClick="OnClickPop6"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="invite"/>
+            <Button
+                android:textSize="10sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cancle"/>
+        </LinearLayout>
+   </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
