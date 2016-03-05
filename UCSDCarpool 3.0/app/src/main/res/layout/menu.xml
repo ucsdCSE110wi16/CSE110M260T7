@@ -26,7 +26,7 @@
         android:layout_marginLeft="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find_Schedule_Customer"/>
+        android:text="Customer-Arrange Carpool"/>
     <Button
         android:id="@+id/home_Notification"
         android:background="#87cefa"
@@ -42,7 +42,7 @@
         android:layout_marginLeft="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main"/>
+        android:text="Home"/>
     <Button
         android:id="@+id/home_Find_Schedule_Driver"
         android:background="#87cefa"
@@ -50,5 +50,5 @@
         android:layout_marginLeft="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find_schedule_driver"/>
+        android:text="Driver-Find Carpool"/>
 </LinearLayout>

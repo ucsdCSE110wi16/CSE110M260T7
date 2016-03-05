@@ -1,10 +1,18 @@
 package com.example.jem.ucsdcarpool;
 
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
 public class Schedule {
     String schedulename;
     String address;
     String scheduledetail;
+
+
+
 
     public String getName() {
         return schedulename;
@@ -35,5 +43,11 @@ public class Schedule {
         this.schedulename = name;
         this.address = address;
         this.scheduledetail = detail;
+
+
     }
+
+
+
+
 }

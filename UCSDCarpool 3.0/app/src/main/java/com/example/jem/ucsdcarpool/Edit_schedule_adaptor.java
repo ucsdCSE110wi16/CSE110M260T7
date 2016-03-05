@@ -25,6 +25,7 @@ public class Edit_schedule_adaptor extends ArrayAdapter<Schedule> {
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.data = data;
+
     }
 
     @Override
@@ -39,8 +40,9 @@ public class Edit_schedule_adaptor extends ArrayAdapter<Schedule> {
             holder.textName = (TextView) row.findViewById(R.id.textView1);
             holder.textAddress = (TextView) row.findViewById(R.id.textView2);
             holder.textDetail = (TextView) row.findViewById(R.id.textView3);
-            holder.btnEdit = (Button) row.findViewById(R.id.button1);
+            //holder.btnEdit = (Button) row.findViewById(R.id.button1);
             holder.btnDelete = (Button) row.findViewById(R.id.button2);
+
             row.setTag(holder);
         } else {
             holder = (UserHolder) row.getTag();
@@ -49,35 +51,52 @@ public class Edit_schedule_adaptor extends ArrayAdapter<Schedule> {
         holder.textName.setText(schedule.getName());
         holder.textAddress.setText(schedule.getAddress());
         holder.textDetail.setText(schedule.getScheduledetail());
-        holder.btnEdit.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Log.i("Edit Button Clicked", "**********");
-                Toast.makeText(context, "Edit button Clicked",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+//        holder.btnEdit.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                Log.i("Edit Button Clicked", "**********");
+//                Toast.makeText(context, "Edit button Clicked",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//        });
         holder.btnDelete.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                // TODO Delete listview from firebase: write code here
                 Log.i("Delete Button Clicked", "**********");
                 Toast.makeText(context, "Delete button Clicked",
                         Toast.LENGTH_LONG).show();
             }
         });
-        return row;
 
+        //TODO:make button dissapear/visible using the following code:
+          String s = schedule.getAddress();
+        if (s.equals("UCSD")){
+            holder.displayD = (Button)row.findViewById(R.id.Display_Driver);
+            holder.displayD.setVisibility(View.GONE);//make D INVISIBLE
+
+        }
+
+
+
+
+
+
+
+        return row;
     }
 
     static class UserHolder {
         TextView textName;
         TextView textAddress;
         TextView textDetail;
-        Button btnEdit;
+        //Button btnEdit;
         Button btnDelete;
+        Button displayC;
+        Button displayD;
     }
 }

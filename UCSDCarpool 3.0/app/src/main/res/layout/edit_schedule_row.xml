@@ -10,7 +10,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="80dp"
         android:layout_alignParentTop="true"
         android:text="Schedule Name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -22,31 +22,32 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="80dp"
         android:text="Address"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="#FFFFFF"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:text="Edit Data"
-        android:textColor="#C51162"
-        android:shadowColor="#FF80AB"
-        />
+
+    <!--<Button-->
+        <!--android:id="@+id/button1"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:background="#FFFFFF"-->
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--android:text="Edit Data"-->
+        <!--android:textColor="#C51162"-->
+        <!--android:shadowColor="#FF80AB"-->
+        <!--/>-->
 
     <Button
         android:id="@+id/button2"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="20dp"
         android:background="#FF80AB"
         android:focusable="false"
         android:focusableInTouchMode="false"
@@ -54,6 +55,25 @@
         android:shadowColor="#FF80AB"
         android:textColor="#C51162"
         />
+<!--display customer or Driver-->
+    <Button
+        android:id="@+id/Display_Customer"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:text="C"
+        android:background="@drawable/button"
+        android:textSize="40dp"/>
+    <Button
+        android:id="@+id/Display_Driver"
+        android:layout_width="80dp"
+        android:layout_height="85dp"
+        android:layout_alignParentLeft="true"
+        android:text="D"
+        android:background="@drawable/button2"
+
+        android:textSize="40dp"/>
+
 
     <TextView
         android:id="@+id/textView3"
@@ -62,6 +82,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="80dp"
         android:text="Schedule Detail" />
 
 </RelativeLayout>
