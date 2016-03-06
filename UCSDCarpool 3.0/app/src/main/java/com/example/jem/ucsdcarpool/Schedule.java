@@ -20,18 +20,6 @@ public class Schedule implements Comparable {
     private boolean taken;
     private boolean deleted;
 
-    public Schedule(String passenger_name, String driver_name, String pick_loc, String destination,
-                    int day, int month, int hour, int minute) {
-        this.passenger_name = passenger_name;
-        this.driver_name = driver_name;
-        this.pick_loc = pick_loc;
-        this.destination = destination;
-        this.day = day;
-        this.month = month;
-        this.hour = hour;
-        this.minute = minute;
-    }
-
     public Schedule(String passenger_name, String driver_name, String passenger_uid, String driver_uid, String pick_loc, String destination, int day, int month, int hour, int minute) {
         this.passenger_name = passenger_name;
         this.driver_name = driver_name;

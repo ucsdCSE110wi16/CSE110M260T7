@@ -2,6 +2,7 @@ package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -39,6 +41,18 @@ public class Find_schedule_driver extends Activity {
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.find_schedule_driver);
+
+    Button back = (Button) findViewById(R.id.back_find_schedule_driver);
+
+
+    back.setOnClickListener(new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Find_schedule_driver.this, Menu.class);
+            startActivity(intent);
+        }
+    });
 
     /**
      * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
@@ -80,8 +94,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
         }
     });
-
     Collections.sort(userArray);
+
 
     /**
      * set item into adapter

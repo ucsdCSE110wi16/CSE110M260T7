@@ -37,6 +37,7 @@ public class Driver extends AppCompatActivity {
         Button mybutton = (Button) findViewById(R.id.backtobasicprofile);
         Button save = (Button) findViewById(R.id.driver_save);
         Button reset = (Button) findViewById(R.id.driver_reset);
+        Button back_driver = (Button) findViewById(R.id.back_driver);
 
         mybutton.setOnClickListener(new View.OnClickListener() {
 
@@ -95,6 +96,14 @@ public class Driver extends AppCompatActivity {
                 make.setText(null);
                 year.setText(null);
                 color.setText(null);
+            }
+        });
+
+        back_driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Driver.this, Menu.class);
+                startActivity(intent);
             }
         });
     }

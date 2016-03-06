@@ -39,6 +39,7 @@ public class Profile extends AppCompatActivity {
         Button mybutton = (Button) findViewById(R.id.todriver);
         Button save = (Button) findViewById(R.id.Basic_save);
         Button reset = (Button) findViewById(R.id.Basic_reset);
+        Button back_basic = (Button) findViewById(R.id.back_basic);
 
         mybutton.setOnClickListener(new View.OnClickListener() {
 
@@ -109,6 +110,14 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+
+        back_basic.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(Profile.this, Menu.class);
+                 startActivity(intent);
+             }
+    });
     }
 
 

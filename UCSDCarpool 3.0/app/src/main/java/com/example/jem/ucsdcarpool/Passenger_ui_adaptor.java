@@ -34,7 +34,7 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
     static Schedule sche;
 
     public Passenger_ui_adaptor(Context context, int layoutResourceId,
-                                 ArrayList<Schedule> data) {
+                                ArrayList<Schedule> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -123,17 +123,16 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
 
             }
         });
-
         holder.btnView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO when click it will go to new activity
-                Log.i("View Button Clicked", "**********");
-
+//                Log.i("View Button Clicked", "**********");
+//                Toast.makeText(context, "Delete button Clicked",
+//                        Toast.LENGTH_LONG).show();
                 int pos = (Integer)v.getTag();
                 sche = data.get(pos);
-
                 Intent k = new Intent(context, Passenger_ui_display.class);
 //                k.putExtra("position", position);
 //                // Or / And

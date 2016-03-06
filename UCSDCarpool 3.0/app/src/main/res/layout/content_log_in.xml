@@ -10,24 +10,25 @@
     android:orientation="vertical"
     android:padding="40dp"
 
-    tools:showIn="@layout/activity_log_in" tools:context="com.example.xiejingwen.ucsdcarpool20.Log_in">
+    tools:showIn="@layout/activity_log_in" tools:context="com.example.xiejingwen.ucsdcarpool20.Log_in"
+    android:weightSum="1">
 
 
     <ImageView
         android:id="@+id/ucsd_logo"
-        android:layout_marginTop="40dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="324828dp"
+        android:layout_height="105dp"
         android:src = "@mipmap/ucsd_logo"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center" />
 
     <EditText
         android:id="@+id/user_name"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="35dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_below="@id/ucsd_logo"
         android:hint="Username"/>
 
 

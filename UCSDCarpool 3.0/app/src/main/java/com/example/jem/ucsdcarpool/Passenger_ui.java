@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -17,9 +18,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -37,7 +36,15 @@ public class Passenger_ui extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui);
 
+        Button back_passenger_ui = (Button) findViewById(R.id.back_passenger_ui);
 
+        back_passenger_ui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent k = new Intent(Passenger_ui.this, Menu.class);
+                startActivity(k);
+            }
+        });
 
         //make view scroll
         ListView lv = (ListView) findViewById(R.id.HomeListView);
@@ -99,17 +106,44 @@ public class Passenger_ui extends Activity {
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
 
+        });
         Collections.sort(userArray);
 
-        if(userArray.size() == 0)
-        {
+        /*
+        Firebase schRef = mRef.child("schedules").child("schedule_id");
+        schRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String passenger_name = dataSnapshot.child("passenger_name").getValue(String.class);
+                String driver_name = dataSnapshot.child("driver_name").getValue(String.class);
+                String pick_loc = dataSnapshot.child("pick_loc").getValue(String.class);
+                String destination = dataSnapshot.child("pick_destination").getValue(String.class);
+                String passenger_uid = mRef.getAuth().getUid();
+                int day = dataSnapshot.child("Days_day").getValue(int.class);
+                int month = dataSnapshot.child("Days_month").getValue(int.class);
+                int hour = dataSnapshot.child("time_hour").getValue(int.class);
+                int minute = dataSnapshot.child("time_minutes").getValue(int.class);
 
-        }else{
-            //TextView
-        }
+                userArray.add(new Schedule(passenger_name, driver_name, passenger_uid, "",pick_loc, destination, day, month, hour, minute));
 
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });*/
+
+        /*
+        userArray.add(new Schedule("Schedule name", "Schedule address", "Schedule Detail"));
+        userArray.add(new Schedule("Morning Schedule", "UCSD", "drive info+data+time"));
+        userArray.add(new Schedule("Afternoon Schedule", "UCSD", "drive info+data+time"));
+        userArray.add(new Schedule("Weekend Schedule", "UCSD", "drive info+data+time"));
+        userArray.add(new Schedule("Monday Schedule", "UCSD", "drive info+data+time"));
+        userArray.add(new Schedule("Holiday Schedule", "UCSD", "drive info+data+time"));
+        userArray.add(new Schedule("Today Schedule", "UCSD", "drive info+data+time"));
+        */
         /**
          * set item into adapter
          */

@@ -8,21 +8,36 @@
     android:layout_marginRight="10dp"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/DrivertextView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="View Existing Carpools"
-        android:textColor="#C51162"
-        android:textSize="25sp" />
+        android:id="@+id/line1">
+
+        <Button
+            android:background="#FF80AB"
+            android:id="@+id/back_find_schedule_driver"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Back"/>
+
+        <TextView
+            android:id="@+id/DrivertextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_centerHorizontal="true"
+            android:text="View Existing Carpools"
+            android:textColor="#C51162"
+            android:textSize="25sp" />
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/Driverlistview1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/DrivertextView"
+        android:layout_below="@+id/line1"
         android:layout_marginTop="5dp"
         android:cacheColorHint="#00000000" />
 

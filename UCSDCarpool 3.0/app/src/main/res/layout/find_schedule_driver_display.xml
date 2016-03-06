@@ -86,19 +86,32 @@
         <!--android:layout_below="@+id/text2"-->
         <!--android:layout_marginTop="10dp">-->
         <!--</fragment>-->
+        <fragment
+            class="com.google.android.gms.maps.MapFragment"
+            android:id="@+id/find_map_driver_schedule"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/CarpoolInfo_Pick_Loc"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
         <Button
             android:id="@+id/btndriverBack"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:text="Back"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/find_map_driver_schedule"
+            android:layout_marginTop="20dp"
             android:layout_alignParentLeft="true"/>
         <Button
             android:id="@+id/btndriverConfirm"
             android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:text="Select this Customer"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/find_map_driver_schedule"
+            android:layout_marginTop="25dp"
             android:background="@color/colorAccent"
             android:layout_alignParentRight="true"/>
 
