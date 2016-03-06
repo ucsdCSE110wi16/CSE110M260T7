@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Schedule {
+public class Schedule implements Comparable {
     private String passenger_name;
     private String driver_name;
     private String passenger_uid;
@@ -110,51 +110,6 @@ public class Schedule {
     }
 
 
-    // comparetor when first schedule is greater than second return 1
-    // when first schedule is lesser than second return -1
-    // when first schedule is same as second return 0
-    private int comparetor(Schedule s1, Schedule s2)
-    {
-        if(s1.getMonth() > s2.getMonth())
-        {
-            return 1;
-        }else if(s1.getMonth() < s2.getMonth())
-        {
-            return  -1;
-        }else{
-
-            if (s1.getDay() > s2.getDay())
-            {
-                return 1;
-            }else if(s1.getDay() < s2.getDay())
-            {
-                return -1;
-            }else{
-
-                if(s1.getHour() > s2.getHour())
-                {
-                    return  1;
-                }else if(s1.getHour() > s2.getHour())
-                {
-                    return -1;
-                }else{
-
-                    if (s1.getMinute() > s2.getMinute())
-                    {
-                        return 1;
-                    }else if (s1.getMinute() < s2.getMinute())
-                    {
-                        return -1;
-                    }else{
-                        return 0;
-                    }
-                }
-            }
-
-
-        }
-    }
-
     public String getPassenger_uid() {
         return passenger_uid;
     }
@@ -185,5 +140,40 @@ public class Schedule {
 
     public void setTaken(boolean taken) {
         this.taken = taken;
+    }
+
+    // comparetor when first schedule is greater than second return 1
+    // when first schedule is lesser than second return -1
+    // when first schedule is same as second return 0
+    @Override
+    public int compareTo(Object s) {
+        int compare = ((Schedule) s).getMonth();
+        if(this.getMonth() != compare)
+        {
+            return this.getMonth() - compare;
+        }else{
+            compare = ((Schedule) s).getDay();
+            if (this.getDay() != compare)
+            {
+                return this.getDay() - compare;
+            }else{
+
+                compare = ((Schedule) s).getHour();
+                if(this.getHour() != compare)
+                {
+                    return this.getHour() - compare;
+                }else{
+                    compare = ((Schedule) s).getMinute();
+                    if (this.getMinute() != compare)
+                    {
+                        return this.getMinute() - compare;
+                    }else{
+                        return 0;
+                    }
+                }
+            }
+
+
+        }
     }
 }

@@ -112,7 +112,7 @@ public class Register extends AppCompatActivity {
                             });
 
 
-                            Intent k = new Intent(Register.this, Menu.class);
+                            Intent k = new Intent(Register.this, Profile.class);
                             startActivity(k);
                         }
 

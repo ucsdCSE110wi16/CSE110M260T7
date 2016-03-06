@@ -3,7 +3,7 @@ package com.example.jem.ucsdcarpool;
 /**
  * Created by xiejingwen on 3/4/16.
  */
-public class ScheduleDriver {
+public class ScheduleDriver implements Comparable{
     private String passenger_name;
     private String pick_loc;
     private String destination;
@@ -82,41 +82,39 @@ public class ScheduleDriver {
     }
 
 
+    public String getPassenger_uid() {
+        return passenger_uid;
+    }
+
+    public void setPassenger_uid(String passenger_uid) {
+        this.passenger_uid = passenger_uid;
+    }
+
     // comparetor when first schedule is greater than second return 1
     // when first schedule is lesser than second return -1
     // when first schedule is same as second return 0
-    private int comparetor(ScheduleDriver s1, ScheduleDriver s2)
-    {
-        if(s1.getMonth() > s2.getMonth())
+    @Override
+    public int compareTo(Object s) {
+        int compare = ((Schedule) s).getMonth();
+        if(this.getMonth() != compare)
         {
-            return 1;
-        }else if(s1.getMonth() < s2.getMonth())
-        {
-            return  -1;
+            return this.getMonth() - compare;
         }else{
-
-            if (s1.getDay() > s2.getDay())
+            compare = ((Schedule) s).getDay();
+            if (this.getDay() != compare)
             {
-                return 1;
-            }else if(s1.getDay() < s2.getDay())
-            {
-                return -1;
+                return this.getDay() - compare;
             }else{
 
-                if(s1.getHour() > s2.getHour())
+                compare = ((Schedule) s).getHour();
+                if(this.getHour() != compare)
                 {
-                    return  1;
-                }else if(s1.getHour() > s2.getHour())
-                {
-                    return -1;
+                    return this.getHour() - compare;
                 }else{
-
-                    if (s1.getMinute() > s2.getMinute())
+                    compare = ((Schedule) s).getMinute();
+                    if (this.getMinute() != compare)
                     {
-                        return 1;
-                    }else if (s1.getMinute() < s2.getMinute())
-                    {
-                        return -1;
+                        return this.getMinute() - compare;
                     }else{
                         return 0;
                     }
@@ -125,13 +123,6 @@ public class ScheduleDriver {
 
 
         }
-    }
 
-    public String getPassenger_uid() {
-        return passenger_uid;
-    }
-
-    public void setPassenger_uid(String passenger_uid) {
-        this.passenger_uid = passenger_uid;
     }
 }

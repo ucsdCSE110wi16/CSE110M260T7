@@ -13,6 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
 
 /**
@@ -22,6 +27,11 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
     Context context;
     int layoutResourceId;
     ArrayList<Schedule> data = new ArrayList<Schedule>();
+
+    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
+
+    private Schedule toDelete;
+    static Schedule sche;
 
     public Passenger_ui_adaptor(Context context, int layoutResourceId,
                                  ArrayList<Schedule> data) {
@@ -48,6 +58,9 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
             holder.btnDelete = (Button) row.findViewById(R.id.button2);
             holder.btnView = (Button) row.findViewById(R.id.buttonView);
 
+            holder.btnView.setTag(position);
+            holder.btnDelete.setTag(position);
+
             row.setTag(holder);
         } else {
             holder = (UserHolder) row.getTag();
@@ -66,6 +79,48 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
                 Log.i("Delete Button Clicked", "**********");
                 Toast.makeText(context, "Delete button Clicked",
                         Toast.LENGTH_LONG).show();
+
+                int pos = (Integer)v.getTag();
+
+                toDelete = data.get(pos);
+
+                final Firebase schRef = mRef.child("schedules").child("schedule_id");
+
+                schRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for(DataSnapshot snap: dataSnapshot.getChildren()) {
+                            if (snap.child("passenger_uid").getValue(String.class).equals(toDelete.getPassenger_uid())) {
+                                if (snap.child("schedule_month").getValue(int.class).equals(toDelete.getMonth())) {
+                                    if (snap.child("schedule_day").getValue(int.class).equals(toDelete.getDay())) {
+                                        if (snap.child("schedule_hour").getValue(int.class).equals(toDelete.getHour())) {
+                                            if (snap.child("schedule_minutes").getValue(int.class).equals(toDelete.getMinute())) {
+                                                final String index = snap.getKey();
+                                                Firebase dRef = schRef.child(index);
+
+                                                dRef.child("schedule_deleted").setValue(true);
+                                                dRef.child("schedule_taken").setValue(false);
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+                Intent k = new Intent(context, Passenger_ui.class);
+//
+                context.startActivity(k);
+
             }
         });
 
@@ -75,8 +130,10 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
             public void onClick(View v) {
                 // TODO when click it will go to new activity
                 Log.i("View Button Clicked", "**********");
-                Toast.makeText(context, "Delete button Clicked",
-                        Toast.LENGTH_LONG).show();
+
+                int pos = (Integer)v.getTag();
+                sche = data.get(pos);
+
                 Intent k = new Intent(context, Passenger_ui_display.class);
 //                k.putExtra("position", position);
 //                // Or / And

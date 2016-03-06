@@ -22,6 +22,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Jem on 3/3/16.
@@ -80,7 +81,7 @@ protected void onCreate(Bundle savedInstanceState) {
         }
     });
 
-
+    Collections.sort(userArray);
 
     /**
      * set item into adapter
