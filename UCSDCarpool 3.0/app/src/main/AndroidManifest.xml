@@ -119,8 +119,8 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDBJ3FzLcIgYw8PDXp4j9-YsLspLTGxmKs"/>
-
+            android:value="AIzaSyD4zqoer5Ub6HvlGicceVPzbf50PmsKycM"/>
+            <!--android:value="AIzaSyDBJ3FzLcIgYw8PDXp4j9-YsLspLTGxmKs"/> -->
     </application>
 
 </manifest>
