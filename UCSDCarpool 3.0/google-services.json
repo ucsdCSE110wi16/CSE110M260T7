@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "default-demo-app-e0d7a",
+    "project_number": "959876430218",
+    "name": "Default Demo App"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959876430218:android:3fd3c0cccf9c03be",
+        "client_id": "android:com.example.jem.ucsdcarpool",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.jem.ucsdcarpool",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959876430218-fkgnc1dd5ph5aha5vg6mo9js7k9qlb0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jem.ucsdcarpool",
+            "certificate_hash": "F929BB99CC8634B0DAADE94FCE990F2C95FAF9D9"
+          }
+        },
+        {
+          "client_id": "959876430218-vf935j9g706gqh01e6sc1p77jhdmad1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
