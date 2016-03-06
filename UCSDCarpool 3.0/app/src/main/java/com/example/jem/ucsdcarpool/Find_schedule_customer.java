@@ -2,6 +2,7 @@ package com.example.jem.ucsdcarpool;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,19 +16,152 @@ import com.firebase.client.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.Bundle;
+import android.preference.EditTextPreference;
+import android.support.v4.app.FragmentActivity;
+import android.view.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.location.LocationManager;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Created by Jem on 3/2/16.
  */
-public class Find_schedule_customer extends AppCompatActivity {
+public class Find_schedule_customer extends FragmentActivity {
     private int selectedMinutes;
     private int selectedHour;
     private int selectedDay;
     private int selectedMonth;
     private Firebase mRef;
+    private GoogleMap googleMap;
+    private CameraPosition cameraPosition;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_schedule_customer);
+
+
+        try {
+            initializeMap();
+            // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            // googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            // googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            // googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+
+            // Mostrar / ocultar tu ubicación
+//            googleMap.setMyLocationEnabled(true);
+
+            // Mostrar / ocultar los controles del zoom
+            googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+            // Mostrar / ocultar boton de localización
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            // Mostrar / ocultar icon de compas
+            googleMap.getUiSettings().setCompassEnabled(true);
+
+            // Mostrar / ocultar evento de rotar
+            googleMap.getUiSettings().setRotateGesturesEnabled(true);
+
+            // Mostrar / ocultar funcionalidad del zoom
+            googleMap.getUiSettings().setZoomGesturesEnabled(true);
+
+            /*
+            // ROSE color icon
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+
+            // GREEN color icon
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            */
+
+//            double latitude = 18.370955;
+//            double longitude = -100.679940;
+//
+//            // crear marker
+//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+//            googleMap.addMarker(marker);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Button search = (Button) findViewById(R.id.search);
+//        textview1 = (TextView)findViewById(R.id.inputpickup);
+//        textview2 = (TextView)findViewById(R.id.inputdestination);
+
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText location_des = (EditText) findViewById(R.id.inputdestination);
+                EditText location_pick = (EditText) findViewById(R.id.inputpickup);
+                String location_d = location_des.getText().toString();
+                String location_p = location_pick.getText().toString();
+                List<Address> addressList_des = null;
+                List<Address> addressList_pick = null;
+
+                if (location_d != null || !location_d.equals("")) {
+                    Geocoder geocoder = new Geocoder(Find_schedule_customer.this);
+                    try {
+                        addressList_des = geocoder.getFromLocationName(location_d, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address address_des = addressList_des.get(0);
+                    LatLng latLng = new LatLng(address_des.getLatitude(), address_des.getLongitude());
+                    googleMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+                    cameraPosition = new CameraPosition.Builder()
+                            .target(latLng)              // Sets the center of the map to ZINTUN
+                            .zoom(17)                  // 缩放比例
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(30)                  // Sets the tilt of the camera to 30 degrees
+                            .build();                  // Creates a CameraPosition from the builder
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
+
+                if (location_p != null || !location_p.equals("")) {
+                    Geocoder geocoder = new Geocoder(Find_schedule_customer.this);
+                    try {
+                        addressList_pick = geocoder.getFromLocationName(location_p, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address address_pick = addressList_pick.get(0);
+                    LatLng latLng = new LatLng(address_pick.getLatitude(), address_pick.getLongitude());
+                    googleMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+                    cameraPosition = new CameraPosition.Builder()
+                            .target(latLng)              // Sets the center of the map to ZINTUN
+                            .zoom(13)                  // 缩放比例
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(30)                  // Sets the tilt of the camera to 30 degrees
+                            .build();                  // Creates a CameraPosition from the builder
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
+            }
+        });
+
+//        googleMap.setOnMapClickListener(this);
 
 
         // ========== test for save
@@ -49,7 +183,10 @@ public class Find_schedule_customer extends AppCompatActivity {
                 //     System.out.println("alallalallalal");
                 // }
                 String line2 = vew2.getText().toString();
-                // System.out.println("String :***" + line2 + "***");
+
+                 System.out.println("String :***" + line2 + "***");
+                System.out.println("String :***" + line + "***");
+
                 if (line != null && line2 != null) {
                     getIntsToTime(line);
                     getIntsToDate(line2);
@@ -195,5 +332,48 @@ public class Find_schedule_customer extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initializeMap();
+    }
+
+
+    private void initializeMap() {
+        if (googleMap == null) {
+            googleMap = ((com.google.android.gms.maps.MapFragment) getFragmentManager().findFragmentById(
+                    R.id.find_map)).getMap();
+
+            // revisa si el mapa se ha creado o no
+            if (googleMap == null) {
+                Toast.makeText(getApplicationContext(),
+                        "Lo siento! No se puede cargar el mapa", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

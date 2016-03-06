@@ -1,41 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:orientation="vertical"
     tools:context="com.example.jem.ucsdcarpool.menu">
 
-
     <!--set location-->
-    <TextView
-        android:id="@+id/text1"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set Your Destination:"/>
-    <TextView
-        android:id="@+id/from"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From:"
-        android:layout_below="@+id/text1"/>
-    <TextView
-        android:id="@+id/to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:layout_below="@+id/from"
-        />
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Input Pickup Location"
+                android:id="@+id/inputpickup"
+                android:textSize="20dp"
+                android:layout_alignBottom="@+id/save"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Confirm"
+                android:background="#87cefa"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
+                android:hint="Input Destination"
+                android:id="@+id/inputdestination"
+                android:textSize="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/inputpickup"
+                android:layout_alignEnd="@+id/inputpickup" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Submit"
+                android:id="@+id/button_save"
+                android:background="#87cefa"
+                android:layout_below="@+id/search"
+                android:layout_alignLeft="@+id/search"
+                android:layout_alignStart="@+id/search"
+                android:layout_marginLeft="30dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
     <fragment
-    android:id="@+id/map"
-    android:layout_below="@+id/to"
-    android:name="com.google.android.gms.maps.MapFragment"
-    android:layout_width="fill_parent"
-    android:layout_height="250dp"
-    />
+        class="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/find_map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/button_save"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 
     <!--set date-->
@@ -112,17 +169,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#87cefa"
-        android:text="Submit Schedule"
-        android:id="@+id/button_save"
-        android:layout_above="@+id/map"
-        android:layout_alignRight="@+id/map"
-        android:layout_alignEnd="@+id/map"
-        />
-
-</RelativeLayout>
+</LinearLayout>
