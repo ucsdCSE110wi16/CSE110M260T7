@@ -20,6 +20,7 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Jem on 3/2/16.
@@ -83,6 +84,7 @@ public class Passenger_ui extends Activity {
                                 snap.child("schedule_month").getValue(int.class),
                                 snap.child("schedule_hour").getValue(int.class),
                                 snap.child("schedule_minutes").getValue(int.class)));
+                        Collections.sort(userArray, new ScheduleCmp());
                     }
 
                     if (snap.child("schedule_taken").getValue(boolean.class) == true && snap.child("driver_uid").getValue(String.class).equals(uid)) {
@@ -96,6 +98,7 @@ public class Passenger_ui extends Activity {
                                 snap.child("schedule_month").getValue(int.class),
                                 snap.child("schedule_hour").getValue(int.class),
                                 snap.child("schedule_minutes").getValue(int.class)));
+                        Collections.sort(userArray, new ScheduleCmp());
                     }
 
                 }
@@ -108,42 +111,8 @@ public class Passenger_ui extends Activity {
             }
 
         });
-        Collections.sort(userArray);
 
-        /*
-        Firebase schRef = mRef.child("schedules").child("schedule_id");
-        schRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String passenger_name = dataSnapshot.child("passenger_name").getValue(String.class);
-                String driver_name = dataSnapshot.child("driver_name").getValue(String.class);
-                String pick_loc = dataSnapshot.child("pick_loc").getValue(String.class);
-                String destination = dataSnapshot.child("pick_destination").getValue(String.class);
-                String passenger_uid = mRef.getAuth().getUid();
-                int day = dataSnapshot.child("Days_day").getValue(int.class);
-                int month = dataSnapshot.child("Days_month").getValue(int.class);
-                int hour = dataSnapshot.child("time_hour").getValue(int.class);
-                int minute = dataSnapshot.child("time_minutes").getValue(int.class);
 
-                userArray.add(new Schedule(passenger_name, driver_name, passenger_uid, "",pick_loc, destination, day, month, hour, minute));
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });*/
-
-        /*
-        userArray.add(new Schedule("Schedule name", "Schedule address", "Schedule Detail"));
-        userArray.add(new Schedule("Morning Schedule", "UCSD", "drive info+data+time"));
-        userArray.add(new Schedule("Afternoon Schedule", "UCSD", "drive info+data+time"));
-        userArray.add(new Schedule("Weekend Schedule", "UCSD", "drive info+data+time"));
-        userArray.add(new Schedule("Monday Schedule", "UCSD", "drive info+data+time"));
-        userArray.add(new Schedule("Holiday Schedule", "UCSD", "drive info+data+time"));
-        userArray.add(new Schedule("Today Schedule", "UCSD", "drive info+data+time"));
-        */
         /**
          * set item into adapter
          */
@@ -194,6 +163,33 @@ public class Passenger_ui extends Activity {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    class ScheduleCmp implements Comparator<Schedule>
+    {
+
+        @Override
+        public int compare(Schedule lhs, Schedule rhs) {
+            if(lhs.getMonth() != rhs.getMonth())
+            {
+                return lhs.getMonth() - rhs.getMonth();
+            }else{
+                if (lhs.getDay() != rhs.getDay())
+                {
+                    return lhs.getDay() - rhs.getDay();
+                }else{
+
+                    if(lhs.getHour() != rhs.getHour())
+                    {
+                        return lhs.getHour() - rhs.getHour();
+                    }else{
+
+                        return lhs.getHour() - rhs.getHour();
+                    }
+                }
+
+            }
+        }
     }
 
 }

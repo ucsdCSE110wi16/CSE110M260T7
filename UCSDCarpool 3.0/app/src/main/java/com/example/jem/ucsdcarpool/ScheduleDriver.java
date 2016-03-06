@@ -3,7 +3,7 @@ package com.example.jem.ucsdcarpool;
 /**
  * Created by xiejingwen on 3/4/16.
  */
-public class ScheduleDriver implements Comparable{
+public class ScheduleDriver{
     private String passenger_name;
     private String pick_loc;
     private String destination;
@@ -90,39 +90,5 @@ public class ScheduleDriver implements Comparable{
         this.passenger_uid = passenger_uid;
     }
 
-    // comparetor when first schedule is greater than second return 1
-    // when first schedule is lesser than second return -1
-    // when first schedule is same as second return 0
-    @Override
-    public int compareTo(Object s) {
-        int compare = ((Schedule) s).getMonth();
-        if(this.getMonth() != compare)
-        {
-            return this.getMonth() - compare;
-        }else{
-            compare = ((Schedule) s).getDay();
-            if (this.getDay() != compare)
-            {
-                return this.getDay() - compare;
-            }else{
 
-                compare = ((Schedule) s).getHour();
-                if(this.getHour() != compare)
-                {
-                    return this.getHour() - compare;
-                }else{
-                    compare = ((Schedule) s).getMinute();
-                    if (this.getMinute() != compare)
-                    {
-                        return this.getMinute() - compare;
-                    }else{
-                        return 0;
-                    }
-                }
-            }
-
-
-        }
-
-    }
 }

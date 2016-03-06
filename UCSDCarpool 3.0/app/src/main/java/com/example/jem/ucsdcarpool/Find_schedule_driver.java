@@ -25,6 +25,7 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Jem on 3/3/16.
@@ -82,6 +83,7 @@ protected void onCreate(Bundle savedInstanceState) {
                         int hour = snap.child("schedule_hour").getValue(int.class);
                         int minute = snap.child("schedule_minutes").getValue(int.class);
                         userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, day, month, hour));
+                        Collections.sort(userArray, new ScheduleDriverCmp());
                     }
                 }else{
 
@@ -94,7 +96,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
         }
     });
-    Collections.sort(userArray);
 
 
     /**
@@ -104,97 +105,40 @@ protected void onCreate(Bundle savedInstanceState) {
     userList = (ListView) findViewById(R.id.Driverlistview1);
     userList.setItemsCanFocus(false);
     userList.setAdapter(userAdapter);
-    /**
-     * get on item click listener
-     */
-//    userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//        @Override
-//        public void onItemClick(AdapterView<?> parent, View v,
-//                                final int position, long id) {
-//            Log.i("List View Clicked", "**********");
-//            Toast.makeText(Find_schedule_driver.this,
-//                    "List View Clicked:" + position, Toast.LENGTH_LONG)
-//                    .show();
-//        }
-//    });
+
+}
+    class ScheduleDriverCmp implements Comparator<ScheduleDriver> {
+
+        // comparetor when first schedule is greater than second return 1
+        // when first schedule is lesser than second return -1
+        // when first schedule is same as second return 0
+        @Override
+        public int compare(ScheduleDriver lhs, ScheduleDriver rhs) {
+            if(lhs.getMonth() != rhs.getMonth())
+            {
+                return lhs.getMonth() - rhs.getMonth();
+            }else{
+                if (lhs.getDay() != rhs.getDay())
+                {
+                    return lhs.getDay() - rhs.getDay();
+                }else{
+
+                    if(lhs.getHour() != rhs.getHour())
+                    {
+                        return lhs.getHour() - rhs.getHour();
+                    }else{
+
+                        return lhs.getHour() - rhs.getHour();
+                    }
+                }
+
+            }
+        }
+    }
 
 }
 
-        }
 
 
 
-//public class Find_schedule_driver extends AppCompatActivity {
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.find_schedule_driver);
-//
-////        Button mybutton1 = (Button) findViewById(R.id.schedule1);
-////        Button mybutton2 = (Button) findViewById(R.id.schedule2);
-////        Button mybutton3 = (Button) findViewById(R.id.schedule3);
-////        Button mybutton4 = (Button) findViewById(R.id.schedule4);
-////        Button mybutton5 = (Button) findViewById(R.id.schedule5);
-////        Button mybutton6 = (Button) findViewById(R.id.schedule6);
-//
-//
-//        mybutton1.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//        mybutton2.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        mybutton3.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        mybutton4.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        mybutton5.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//        mybutton6.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Find_schedule_driver.this, Schedule_Find_Schedule.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//    }
 

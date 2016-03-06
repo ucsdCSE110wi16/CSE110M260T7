@@ -197,6 +197,9 @@ public class Find_schedule_customer extends FragmentActivity {
                     final String uid = mRef.getAuth().getUid().toString();
                     uRef = uRef.child(uid);
 
+                    final EditText pick = (EditText) findViewById(R.id.inputpickup);
+                    final EditText desti = (EditText) findViewById(R.id.inputdestination);
+
 
                     //String customer_name = uRef.
                     uRef.addValueEventListener(new ValueEventListener() {
@@ -225,8 +228,8 @@ public class Find_schedule_customer extends FragmentActivity {
                                     map.put("schedule_day", selectedDay);
                                     map.put("schedule_hour", selectedHour);
                                     map.put("schedule_minutes", selectedMinutes);
-                                    map.put("destination", "$$$");
-                                    map.put("pickup_location", "$$$");
+                                    map.put("destination", pick.getText().toString());
+                                    map.put("pickup_location", desti.getText().toString());
                                     map.put("schedule_deleted", false);
                                     //map.put("")
                                     pushSche.child("" + numberOfChild).setValue(map);
