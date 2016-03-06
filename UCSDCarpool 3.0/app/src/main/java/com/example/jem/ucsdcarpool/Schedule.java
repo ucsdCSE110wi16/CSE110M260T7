@@ -9,17 +9,34 @@ import android.widget.TextView;
 public class Schedule {
     private String passenger_name;
     private String driver_name;
+    private String passenger_uid;
+    private String driver_uid;
     private String pick_loc;
     private String destination;
     private int day;
     private int month;
     private int hour;
     private int minute;
+    private boolean taken;
+    private boolean deleted;
 
     public Schedule(String passenger_name, String driver_name, String pick_loc, String destination,
                     int day, int month, int hour, int minute) {
         this.passenger_name = passenger_name;
         this.driver_name = driver_name;
+        this.pick_loc = pick_loc;
+        this.destination = destination;
+        this.day = day;
+        this.month = month;
+        this.hour = hour;
+        this.minute = minute;
+    }
+
+    public Schedule(String passenger_name, String driver_name, String passenger_uid, String driver_uid, String pick_loc, String destination, int day, int month, int hour, int minute) {
+        this.passenger_name = passenger_name;
+        this.driver_name = driver_name;
+        this.passenger_uid = passenger_uid;
+        this.driver_uid = driver_uid;
         this.pick_loc = pick_loc;
         this.destination = destination;
         this.day = day;
@@ -136,5 +153,37 @@ public class Schedule {
 
 
         }
+    }
+
+    public String getPassenger_uid() {
+        return passenger_uid;
+    }
+
+    public void setPassenger_uid(String passenger_uid) {
+        this.passenger_uid = passenger_uid;
+    }
+
+    public String getDriver_uid() {
+        return driver_uid;
+    }
+
+    public void setDriver_uid(String driver_uid) {
+        this.driver_uid = driver_uid;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean isTaken() {
+        return taken;
+    }
+
+    public void setTaken(boolean taken) {
+        this.taken = taken;
     }
 }

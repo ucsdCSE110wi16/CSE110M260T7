@@ -52,16 +52,22 @@ protected void onCreate(Bundle savedInstanceState) {
             for(DataSnapshot snap : dataSnapshot.getChildren())
             {
                 String passenger_uid = snap.child("passenger_uid").getValue(String.class);
-                if(snap.child("schedule_taken").getValue().toString().equals("false") || !(passenger_uid.equals(user_uid)))
+                if(snap.child("schedule_taken").getValue().toString().equals("false") )
                 {
-                    String passenger_name = snap.child("passenger_name").getValue(String.class);
-                    String destination = null;
-                    String pick_loc = null;
-                    int month = snap.child("schedule_month").getValue(int.class);
-                    int day = snap.child("schedule_day").getValue(int.class);
-                    int hour = snap.child("schedule_hour").getValue(int.class);
-                    int minute = snap.child("schedule_minute").getValue(int.class);
-                    userArray.add(new ScheduleDriver(month, passenger_name, pick_loc, destination, day, hour, minute));
+                    if (passenger_uid.equals(user_uid))
+                    {
+                        System.out.println(user_uid);
+                    }else {
+                        System.out.println("not same, the uid from user_info: " + user_uid + " the uid from schedule: " + passenger_uid);
+                        String passenger_name = snap.child("passenger_name").getValue(String.class);
+                        String destination = null;
+                        String pick_loc = null;
+                        int month = snap.child("schedule_month").getValue(int.class);
+                        int day = snap.child("schedule_day").getValue(int.class);
+                        int hour = snap.child("schedule_hour").getValue(int.class);
+                        int minute = snap.child("schedule_minutes").getValue(int.class);
+                        userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, day, month, hour));
+                    }
                 }else{
 
                 }

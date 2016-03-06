@@ -7,20 +7,21 @@ public class ScheduleDriver {
     private String passenger_name;
     private String pick_loc;
     private String destination;
+    private String passenger_uid;
     private int day;
     private int month;
     private int hour;
     private int minute;
 
-
-    public ScheduleDriver(int month, String passenger_name, String pick_loc, String destination, int day, int hour, int minute) {
-        this.month = month;
+    public ScheduleDriver(String passenger_name, int minute, String destination, String pick_loc, String passenger_uid, int day, int month, int hour) {
         this.passenger_name = passenger_name;
-        this.pick_loc = pick_loc;
-        this.destination = destination;
-        this.day = day;
-        this.hour = hour;
         this.minute = minute;
+        this.destination = destination;
+        this.pick_loc = pick_loc;
+        this.passenger_uid = passenger_uid;
+        this.day = day;
+        this.month = month;
+        this.hour = hour;
     }
 
 
@@ -124,5 +125,13 @@ public class ScheduleDriver {
 
 
         }
+    }
+
+    public String getPassenger_uid() {
+        return passenger_uid;
+    }
+
+    public void setPassenger_uid(String passenger_uid) {
+        this.passenger_uid = passenger_uid;
     }
 }

@@ -88,6 +88,9 @@ public class Find_schedule_customer extends AppCompatActivity {
                                     map.put("schedule_day", selectedDay);
                                     map.put("schedule_hour", selectedHour);
                                     map.put("schedule_minutes", selectedMinutes);
+                                    map.put("destination", "$$$");
+                                    map.put("pickup_location", "$$$");
+                                    map.put("schedule_deleted", false);
                                     //map.put("")
                                     pushSche.child("" + numberOfChild).setValue(map);
                                 }

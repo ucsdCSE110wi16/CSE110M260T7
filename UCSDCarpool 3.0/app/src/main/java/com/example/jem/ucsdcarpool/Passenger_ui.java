@@ -1,14 +1,9 @@
 package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,37 +34,7 @@ public class Passenger_ui extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui);
 
-        Firebase firRef = mRef.child("schedules").child("schedule_id");
-        firRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String passenger_name = dataSnapshot.child("passenger_name").getValue(String.class);
-                String driver_name = dataSnapshot.child("driver_name").getValue(String.class);
-                String pick_loc = dataSnapshot.child("pick_loc").getValue(String.class);
-                String destination = dataSnapshot.child("pick_destination").getValue(String.class);
-                int day = dataSnapshot.child("Days_day").getValue(int.class);
-                int month = dataSnapshot.child("Days_month").getValue(int.class);
-                int hour = dataSnapshot.child("time_hour").getValue(int.class);
-                int minute = dataSnapshot.child("time_minutes").getValue(int.class);
 
-                TextView date = (TextView) findViewById(R.id.FIREBASE_Date);
-                date.setText("" + month + " - " + day);
-
-                TextView time = (TextView) findViewById(R.id.FIREBASE_Time);
-                time.setText("" + hour + " : " + minute);
-
-                TextView dest = (TextView) findViewById(R.id.FIREBASE_destination);
-                dest.setText(destination);
-
-                TextView pick = (TextView) findViewById(R.id.FIREBASE_pickup);
-                pick.setText(pick_loc);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
 
         //make view scroll
         ListView lv = (ListView) findViewById(R.id.HomeListView);
@@ -89,6 +53,52 @@ public class Passenger_ui extends Activity {
         /**
          * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
          */
+
+        final String uid = mRef.getAuth().getUid();
+
+        Firebase firRef = mRef.child("schedules").child("schedule_id");
+        firRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    if (snap.child("passenger_uid").getValue(String.class).equals(uid) && snap.child("schedule_taken").getValue(boolean.class) == true) {
+                        userArray.add(new Schedule(snap.child("passenger_name").getValue(String.class),
+                                snap.child("driver_name").getValue(String.class),
+                                snap.child("passenger_uid").getValue(String.class),
+                                snap.child("driver_uid").getValue(String.class),
+                                snap.child("pickup_location").getValue(String.class),
+                                snap.child("destination").getValue(String.class),
+                                snap.child("schedule_day").getValue(int.class),
+                                snap.child("schedule_month").getValue(int.class),
+                                snap.child("schedule_hour").getValue(int.class),
+                                snap.child("schedule_minutes").getValue(int.class)));
+                    }
+
+                    if (snap.child("schedule_taken").getValue(boolean.class) == true && snap.child("driver_uid").getValue(String.class).equals(uid)) {
+                        userArray.add(new Schedule(snap.child("passenger_name").getValue(String.class),
+                                snap.child("driver_name").getValue(String.class),
+                                snap.child("passenger_uid").getValue(String.class),
+                                snap.child("driver_uid").getValue(String.class),
+                                snap.child("pickup_location").getValue(String.class),
+                                snap.child("destination").getValue(String.class),
+                                snap.child("schedule_day").getValue(int.class),
+                                snap.child("schedule_month").getValue(int.class),
+                                snap.child("schedule_hour").getValue(int.class),
+                                snap.child("schedule_minutes").getValue(int.class)));
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        /*
         Firebase schRef = mRef.child("schedules").child("schedule_id");
         schRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,24 +107,21 @@ public class Passenger_ui extends Activity {
                 String driver_name = dataSnapshot.child("driver_name").getValue(String.class);
                 String pick_loc = dataSnapshot.child("pick_loc").getValue(String.class);
                 String destination = dataSnapshot.child("pick_destination").getValue(String.class);
+                String passenger_uid = mRef.getAuth().getUid();
                 int day = dataSnapshot.child("Days_day").getValue(int.class);
                 int month = dataSnapshot.child("Days_month").getValue(int.class);
                 int hour = dataSnapshot.child("time_hour").getValue(int.class);
                 int minute = dataSnapshot.child("time_minutes").getValue(int.class);
 
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
-                userArray.add(new Schedule(passenger_name, driver_name, pick_loc, destination, day, month, hour, minute));
+                userArray.add(new Schedule(passenger_name, driver_name, passenger_uid, "",pick_loc, destination, day, month, hour, minute));
+
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
+        });*/
 
         /*
         userArray.add(new Schedule("Schedule name", "Schedule address", "Schedule Detail"));

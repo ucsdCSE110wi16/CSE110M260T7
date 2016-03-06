@@ -22,6 +22,8 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
     int layoutResourceId;
     ArrayList<ScheduleDriver> data = new ArrayList<ScheduleDriver>();
 
+    static ScheduleDriver driver;
+
     public Find_schedule_driver_adaptor(Context context, int layoutResourceId,
                                  ArrayList<ScheduleDriver> data) {
         super(context, layoutResourceId, data);
@@ -36,6 +38,8 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
         View row = convertView;
         UserHolder holder = null;
 
+
+
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
@@ -46,10 +50,13 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
             //holder.btnEdit = (Button) row.findViewById(R.id.button1);
             holder.btnView = (Button) row.findViewById(R.id.Driverbutton2);
 
+            holder.btnView.setTag(position);
+
             row.setTag(holder);
         } else {
             holder = (UserHolder) row.getTag();
         }
+
         ScheduleDriver schedule = data.get(position);
         holder.textName.setText(schedule.getPassenger_name());
         holder.textAddress.setText(schedule.getDestination());
@@ -74,8 +81,16 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
 //                Toast.makeText(context, "Delete button Clicked",
 //                        Toast.LENGTH_LONG).show();
                 Log.i("View Button", "clicked");
+                if(v == null)
+                {
+                    System.out.println("view is null");
+                }
+                int pos = (Integer)v.getTag();
+                System.out.println("position is : " + pos);
+                driver = data.get(pos);
                 Intent intent = new Intent(context,Find_schedule_driver_Display.class);
                 context.startActivity(intent);
+
 
             }
         });
