@@ -16,7 +16,6 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.menu);
 
         Button mybutton1 = (Button) findViewById(R.id.home_profile);
-        Button mybutton2 = (Button) findViewById(R.id.home_Edit_Schedule);
         Button mybutton3 = (Button) findViewById(R.id.home_Find_Schedule);
         Button mybutton4 = (Button) findViewById(R.id.home_main);
         Button mybutton5 = (Button) findViewById(R.id.home_Find_Schedule_Driver);
@@ -29,15 +28,6 @@ public class Menu extends AppCompatActivity {
                 Intent intent = new Intent(Menu.this, Profile.class);
                 startActivity(intent);
 
-            }
-        });
-
-        mybutton2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Edit_schedule.class);
-                startActivity(intent);
             }
         });
 

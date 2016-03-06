@@ -51,9 +51,9 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
             holder = (UserHolder) row.getTag();
         }
         ScheduleDriver schedule = data.get(position);
-        holder.textName.setText(schedule.getName());
-        holder.textAddress.setText(schedule.getAddress());
-        holder.textDetail.setText(schedule.getScheduledetail());
+        holder.textName.setText(schedule.getPassenger_name());
+        holder.textAddress.setText(schedule.getDestination());
+        holder.textDetail.setText(schedule.getMonth() + "/" + schedule.getDay() + "/" + schedule.getHour() + "/" + schedule.getMinute());
 
 //        holder.btnEdit.setOnClickListener(new OnClickListener() {
 //

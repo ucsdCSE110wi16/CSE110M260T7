@@ -76,11 +76,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".Edit_schedule"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
             android:name=".Notification"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />

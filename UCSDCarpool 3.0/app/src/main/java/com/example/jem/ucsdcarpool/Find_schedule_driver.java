@@ -16,6 +16,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
 
 /**
@@ -23,7 +28,7 @@ import java.util.ArrayList;
  */
 public class Find_schedule_driver extends Activity {
 
-
+    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
         ListView userList;
         Find_schedule_driver_adaptor userAdapter;
         ArrayList<ScheduleDriver> userArray = new ArrayList<ScheduleDriver>();
@@ -37,13 +42,58 @@ protected void onCreate(Bundle savedInstanceState) {
     /**
      * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
      */
-    userArray.add(new ScheduleDriver("Schedule name", "Schedule address", "Schedule Detail"));
-    userArray.add(new ScheduleDriver("Morning Schedule", "UCSD", "drive info+data+time"));
-    userArray.add(new ScheduleDriver("Afternoon Schedule", "UCSD", "drive info+data+time"));
-    userArray.add(new ScheduleDriver("Weekend Schedule", "UCSD", "drive info+data+time"));
-    userArray.add(new ScheduleDriver("Monday Schedule", "UCSD", "drive info+data+time"));
-    userArray.add(new ScheduleDriver("Holiday Schedule", "UCSD", "drive info+data+time"));
-    userArray.add(new ScheduleDriver("Today Schedule", "UCSD", "drive info+data+time"));
+
+    Firebase findSche = mRef.child("schedules/schedule_id");
+    final Firebase uRef = mRef.child("user_info").child(mRef.getAuth().getUid());
+
+    findSche.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            for(DataSnapshot snap : dataSnapshot.getChildren())
+            {
+                final DataSnapshot shot = snap;
+                if(snap.child("schedule_taken").getValue().toString().equals("false"))
+                {
+                    uRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String user_name = dataSnapshot.child("user_name").getValue(String.class);
+                            String passenger_name = shot.child("passenger_name").getValue(String.class);
+                            if (user_name.equals(passenger_name)) {
+                                System.out.println("same");
+                            } else {
+                                System.out.println("not the same");
+                                String destination = null;
+                                String pick_loc = null;
+                                int month = shot.child("schedule_month").getValue(int.class);
+                                int day = shot.child("schedule_day").getValue(int.class);
+                                int hour = shot.child("schedule_hour").getValue(int.class);
+                                int minute = shot.child("schedule_minute").getValue(int.class);
+                                userArray.add(new ScheduleDriver(month, passenger_name, pick_loc, destination, day, hour, minute));
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+
+                        }
+                    });
+
+
+                }else{
+
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(FirebaseError firebaseError) {
+
+        }
+    });
+
+
+
     /**
      * set item into adapter
      */
