@@ -39,6 +39,7 @@
 
 
     <TextView
+        android:id="@+id/starMarkInput"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="75dp"
         android:layout_width="wrap_content"

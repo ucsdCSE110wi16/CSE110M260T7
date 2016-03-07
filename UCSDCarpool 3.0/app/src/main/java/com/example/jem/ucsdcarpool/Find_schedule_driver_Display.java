@@ -41,6 +41,7 @@ public class Find_schedule_driver_Display extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_schedule_driver_display);
+        Firebase.setAndroidContext(this);
 
         TextView date = (TextView) findViewById(R.id.CarpoolInfo_Date);
         TextView time = (TextView) findViewById(R.id.CarpoolInfo_Time);

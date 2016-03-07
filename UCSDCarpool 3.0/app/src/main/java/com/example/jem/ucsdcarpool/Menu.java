@@ -18,12 +18,15 @@ import com.firebase.client.ValueEventListener;
  * Created by Jem on 3/2/16.
  */
 public class Menu extends AppCompatActivity {
-    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
+    private Firebase mRef;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+        Firebase.setAndroidContext(this);
+
+        mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
 
         Button mybutton1 = (Button) findViewById(R.id.home_profile);
         Button mybutton3 = (Button) findViewById(R.id.home_Find_Schedule);

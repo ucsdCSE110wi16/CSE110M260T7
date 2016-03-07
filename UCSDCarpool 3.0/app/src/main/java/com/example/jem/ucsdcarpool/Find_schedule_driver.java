@@ -27,7 +27,7 @@ public class Find_schedule_driver extends Activity {
     private int month;
     private int day;
 
-    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
+    private Firebase mRef;
         ListView userList;
         Find_schedule_driver_adaptor userAdapter;
         ArrayList<ScheduleDriver> userArray = new ArrayList<ScheduleDriver>();
@@ -37,6 +37,9 @@ public class Find_schedule_driver extends Activity {
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.find_schedule_driver);
+
+    Firebase.setAndroidContext(this);
+    mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
 
     Button back = (Button) findViewById(R.id.back_find_schedule_driver);
 

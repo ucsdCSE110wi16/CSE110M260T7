@@ -54,6 +54,8 @@ public class RegisterTest {
         onView(withId(R.id.user_password)).check(matches(withText("")));
         onView(withId(R.id.user_email)).check(matches(withText("")));
 
+        onView(withId(R.id.register))
+                .perform(click()).check(matches(isDisplayed()));
+
     }
 }
-

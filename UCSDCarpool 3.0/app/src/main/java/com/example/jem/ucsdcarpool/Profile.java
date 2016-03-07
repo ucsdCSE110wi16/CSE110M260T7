@@ -1,6 +1,5 @@
 package com.example.jem.ucsdcarpool;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import com.firebase.client.Firebase;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by yucheng on 2/28/16.
@@ -26,6 +24,7 @@ public class Profile extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+        Firebase.setAndroidContext(this);
 
         final EditText name = (EditText) findViewById(R.id.user_name_update_custom);
         final EditText id = (EditText) findViewById(R.id.user_ID_update_custom);

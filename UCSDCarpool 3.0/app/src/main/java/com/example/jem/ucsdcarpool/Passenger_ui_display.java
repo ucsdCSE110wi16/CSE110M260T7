@@ -31,14 +31,15 @@ import java.util.List;
  * Created by xiejingwen on 3/5/16.
  */
 public class Passenger_ui_display extends FragmentActivity {
-    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
+    private Firebase mRef ;
     private GoogleMap googleMap;
     private CameraPosition cameraPosition;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui_display);
-
+        Firebase.setAndroidContext(this);
+        mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
         Button arrive = (Button) findViewById(R.id.arrive_back);
 
         TextView date = (TextView) findViewById(R.id.CarpoolInfo_Date);

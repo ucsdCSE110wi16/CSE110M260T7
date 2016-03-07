@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Jem on 3/2/16.
  */
 public class Passenger_ui extends Activity {
-    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
+    private Firebase mRef;
     private ListView userList;
     private Passenger_ui_adaptor userAdapter;
     private ArrayList<Schedule> userArray = new ArrayList<Schedule>();
@@ -41,6 +41,9 @@ public class Passenger_ui extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui);
+        Firebase.setAndroidContext(this);
+
+        mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
 
         Button back_passenger_ui = (Button) findViewById(R.id.back_passenger_ui);
 
