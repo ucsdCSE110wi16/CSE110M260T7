@@ -32,7 +32,8 @@ public class DatePickFragment extends DialogFragment implements DatePickerDialog
         TextView tv_date = (TextView) getActivity().findViewById(R.id.tv_date);
         tv_date.setText("Your chosen date is…\n\n");
         //Display the user changed time on TextView
-        tv_date.setText(tv_date.getText() + " " + year +  "-" + month + "-" + day);
+        int mon = month + 1;
+        tv_date.setText(tv_date.getText() + " " + year +  "-" + mon + "-" + day);
     }
 
 

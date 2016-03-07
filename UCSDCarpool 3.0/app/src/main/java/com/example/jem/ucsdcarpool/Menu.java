@@ -1,18 +1,25 @@
 package com.example.jem.ucsdcarpool;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 /**
  * Created by Jem on 3/2/16.
  */
 public class Menu extends AppCompatActivity {
-    private Firebase mRef = new Firebase("");
+    private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +64,38 @@ public class Menu extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Find_schedule_driver.class);
-                startActivity(intent);
+
+                String uid = mRef.getAuth().getUid();
+                Firebase uRef = mRef.child("user_info").child(uid);
+
+                uRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String license = dataSnapshot.child("driver_license").getValue(String.class);
+                        String expire = dataSnapshot.child("driver_expire_date").getValue(String.class);
+                        String col = dataSnapshot.child("driver_car_color").getValue(String.class);
+                        if (license == "" || expire == "" || col == "" || license == null || expire == null || col == null) {
+                            Context context = getApplicationContext();
+                            CharSequence text = "Need to fill in driver info, to be authorized as driver!";
+                            int duration = Toast.LENGTH_SHORT;
+
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 10, 10);
+                            toast.show();
+                        } else {
+                            Intent intent = new Intent(Menu.this, Find_schedule_driver.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+
             }
         });
 

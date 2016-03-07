@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -60,7 +59,7 @@ public class Find_schedule_driver_adaptor extends ArrayAdapter<ScheduleDriver> {
         ScheduleDriver schedule = data.get(position);
         holder.textName.setText(schedule.getPassenger_name());
         holder.textAddress.setText(schedule.getDestination());
-        holder.textDetail.setText(schedule.getMonth() + "/" + schedule.getDay() + "/" + schedule.getHour() + "/" + schedule.getMinute());
+        holder.textDetail.setText(schedule.getMonth() + " / " + schedule.getDay() + "   " + schedule.getHour() + " : " + schedule.getMinute());
 
 //        holder.btnEdit.setOnClickListener(new OnClickListener() {
 //

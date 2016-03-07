@@ -1,8 +1,12 @@
 package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +18,16 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,8 +47,8 @@ public class Find_schedule_driver_Display extends Activity{
         TextView dest = (TextView)findViewById(R.id.CarpoolInfo_Destination);
         TextView pick_loc = (TextView) findViewById(R.id.CarpoolInfo_Pick_Loc);
 
-        date.setText(Find_schedule_driver_adaptor.driver.getMonth() + "/" + Find_schedule_driver_adaptor.driver.getDay());
-        time.setText(Find_schedule_driver_adaptor.driver.getHour() + ":" + Find_schedule_driver_adaptor.driver.getMinute());
+        date.setText(Find_schedule_driver_adaptor.driver.getMonth() + " / " + Find_schedule_driver_adaptor.driver.getDay());
+        time.setText(Find_schedule_driver_adaptor.driver.getHour() + " : " + Find_schedule_driver_adaptor.driver.getMinute());
         dest.setText(Find_schedule_driver_adaptor.driver.getDestination());
         pick_loc.setText(Find_schedule_driver_adaptor.driver.getPick_loc());
 
@@ -70,6 +80,50 @@ public class Find_schedule_driver_Display extends Activity{
 
             // Mostrar / ocultar funcionalidad del zoom
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
+
+            String location_d = Find_schedule_driver_adaptor.driver.getDestination();
+            String location_p = Find_schedule_driver_adaptor.driver.getPick_loc();
+            List<Address> addressList_des = null;
+            List<Address> addressList_pick = null;
+
+            Geocoder geocoder = new Geocoder(Find_schedule_driver_Display.this);
+            try {
+                addressList_des = geocoder.getFromLocationName(location_d, 1);
+                addressList_pick = geocoder.getFromLocationName(location_p, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address address_des = addressList_des.get(0);
+            LatLng DestlatLng = new LatLng(address_des.getLatitude(), address_des.getLongitude());
+
+            Address address_pic = addressList_pick.get(0);
+            LatLng PicklatLng = new LatLng(address_pic.getLatitude(), address_pic.getLongitude());
+
+//            double latitude = 18.370955;
+//            double longitude = -100.679940;
+//
+//            // crear marker
+            MarkerOptions marker = new MarkerOptions().position(DestlatLng).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+            googleMap.addMarker(marker);
+
+            MarkerOptions marker1 = new MarkerOptions().position(PicklatLng).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+            marker1.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+            googleMap.addMarker(marker1);
+
+            cameraPosition = new CameraPosition.Builder()
+                    .target(DestlatLng)              // Sets the center of the map to ZINTUN
+                    .zoom(17)                  // 缩放比例
+                    .bearing(0)                // Sets the orientation of the camera to east
+                    .tilt(30)                  // Sets the tilt of the camera to 30 degrees
+                    .build();                  // Creates a CameraPosition from the builder
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
 
             /*
             // ROSE color icon
@@ -136,6 +190,18 @@ public class Find_schedule_driver_Display extends Activity{
                                                         map.put("driver_uid", mRef.getAuth().getUid());
                                                         map.put("schedule_taken", true);
                                                         uRef.child(index).updateChildren(map);
+
+                                                        Context context = getApplicationContext();
+                                                        CharSequence text = "Driver authorized, schedule added to your home!";
+                                                        int duration = Toast.LENGTH_SHORT;
+
+
+                                                        Toast toast = Toast.makeText(context, text, duration);
+                                                        toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 10, 10);
+                                                        toast.show();
+
+                                                        Intent k = new Intent(Find_schedule_driver_Display.this, Menu.class);
+                                                        startActivity(k);
                                                     }
 
                                                     @Override

@@ -1,22 +1,11 @@
 package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -24,13 +13,19 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Jem on 3/3/16.
  */
 public class Find_schedule_driver extends Activity {
+
+    private Calendar calendar;
+    private int month;
+    private int day;
 
     private Firebase mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
         ListView userList;
@@ -44,6 +39,11 @@ protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.find_schedule_driver);
 
     Button back = (Button) findViewById(R.id.back_find_schedule_driver);
+
+    calendar = Calendar.getInstance();
+
+    month = calendar.get(Calendar.MONTH) + 1;
+    day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
     back.setOnClickListener(new View.OnClickListener() {
@@ -68,22 +68,68 @@ protected void onCreate(Bundle savedInstanceState) {
             for(DataSnapshot snap : dataSnapshot.getChildren())
             {
                 String passenger_uid = snap.child("passenger_uid").getValue(String.class);
-                if(snap.child("schedule_taken").getValue().toString().equals("false") )
+                if(snap.child("schedule_taken").getValue().toString().equals("false") && snap.child("schedule_deleted").getValue().toString().equals("false"))
                 {
                     if (passenger_uid.equals(user_uid))
                     {
-                        System.out.println(user_uid);
+
                     }else {
-                        System.out.println("not same, the uid from user_info: " + user_uid + " the uid from schedule: " + passenger_uid);
+                        System.out.println("start to check time");
                         String passenger_name = snap.child("passenger_name").getValue(String.class);
-                        String destination = null;
-                        String pick_loc = null;
-                        int month = snap.child("schedule_month").getValue(int.class);
-                        int day = snap.child("schedule_day").getValue(int.class);
+                        String destination = snap.child("destination").getValue(String.class);
+                        String pick_loc = snap.child("pickup_location").getValue(String.class);
+                        int mon = snap.child("schedule_month").getValue(int.class);
+                        int da = snap.child("schedule_day").getValue(int.class);
                         int hour = snap.child("schedule_hour").getValue(int.class);
                         int minute = snap.child("schedule_minutes").getValue(int.class);
-                        userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, day, month, hour));
-                        Collections.sort(userArray, new ScheduleDriverCmp());
+
+                        System.out.println("the current month: " + month + " the current day: " + day
+                                + " the schedule month: " + mon + " the schedule day: " + da);
+
+                        int minu = calendar.get(Calendar.MINUTE);
+                        int hou = calendar.get(Calendar.HOUR);
+
+                        if(mon < month)
+                        {
+
+                        }else{
+                            if (mon == month && da < day)
+                            {}else if(mon > month)
+                            {
+                                userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, da, mon, hour));
+                                Collections.sort(userArray, new ScheduleDriverCmp());
+                            }else {
+
+                                if(da > day)
+                                {
+                                    userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, da, mon, hour));
+                                    Collections.sort(userArray, new ScheduleDriverCmp());
+                                }else if(da == day && hour < hou){
+
+                                }else{
+
+                                    if(hour > hou)
+                                    {
+                                        userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, da, mon, hour));
+                                        Collections.sort(userArray, new ScheduleDriverCmp());
+                                    }else if(hour == hou && minute < minu)
+                                    {
+
+                                    }else{
+                                        if(minute > minu)
+                                        {
+                                            userArray.add(new ScheduleDriver(passenger_name, minute, destination, pick_loc, passenger_uid, da, mon, hour));
+                                            Collections.sort(userArray, new ScheduleDriverCmp());
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        }
+
+
+
                     }
                 }else{
 
@@ -96,6 +142,13 @@ protected void onCreate(Bundle savedInstanceState) {
 
         }
     });
+
+    try {
+
+        TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+        //Handle exception
+    }
 
 
     /**

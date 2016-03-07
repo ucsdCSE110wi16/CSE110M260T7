@@ -3,7 +3,6 @@ package com.example.jem.ucsdcarpool;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +67,7 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
         Schedule schedule = data.get(position);
         holder.textName.setText(schedule.getPassenger_name());
         holder.textAddress.setText(schedule.getDestination());
-        holder.textDetail.setText(schedule.getMonth() + "/" + schedule.getDay() + "/" + schedule.getHour() + "/" + schedule.getMinute());
+        holder.textDetail.setText(schedule.getMonth() + " / " + schedule.getDay() + "   " + schedule.getHour() + " : " + schedule.getMinute());
 
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +142,9 @@ public class Passenger_ui_adaptor extends ArrayAdapter<Schedule> {
 
 
         //TODO:make button dissapear/visible using the following code:
-        String s = schedule.getDestination();
-        if (s.equals("UCSD")){
+        String id = schedule.getDriver_uid();
+        String uid = mRef.getAuth().getUid();
+        if (!id.equals(uid)){
             holder.displayD = (Button)row.findViewById(R.id.Display_Driver);
             holder.displayD.setVisibility(View.GONE);//make D INVISIBLE
 
