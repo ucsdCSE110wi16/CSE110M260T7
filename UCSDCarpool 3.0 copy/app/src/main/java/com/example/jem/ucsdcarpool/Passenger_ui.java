@@ -2,8 +2,11 @@ package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +15,25 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,6 +45,9 @@ public class Passenger_ui extends Activity {
     private Passenger_ui_adaptor userAdapter;
     private ArrayList<Schedule> userArray = new ArrayList<Schedule>();
 
+    private GoogleMap googleMap;
+    private CameraPosition cameraPosition;
+
     private Calendar calendar;
     private int month;
     private int day;
@@ -42,6 +57,8 @@ public class Passenger_ui extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui);
         Firebase.setAndroidContext(this);
+
+
 
         mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
 
@@ -244,6 +261,97 @@ public class Passenger_ui extends Activity {
                     homePick.setText(userArray.get(0).getPick_loc());
                 }
 
+                try {
+                    initializeMap();
+                    // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    // googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                    // googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    // googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+
+                    // Mostrar / ocultar tu ubicación
+//            googleMap.setMyLocationEnabled(true);
+
+                    // Mostrar / ocultar los controles del zoom
+                    googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+                    // Mostrar / ocultar boton de localización
+                    googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+                    // Mostrar / ocultar icon de compas
+                    googleMap.getUiSettings().setCompassEnabled(true);
+
+                    // Mostrar / ocultar evento de rotar
+                    googleMap.getUiSettings().setRotateGesturesEnabled(true);
+
+                    // Mostrar / ocultar funcionalidad del zoom
+                    googleMap.getUiSettings().setZoomGesturesEnabled(true);
+
+                    String location_d = userArray.get(0).getDestination();
+                    String location_p = userArray.get(0).getPick_loc();
+                    List<Address> addressList_des = null;
+                    List<Address> addressList_pick = null;
+
+                    Geocoder geocoder = new Geocoder(Passenger_ui.this);
+                    try {
+                        addressList_des = geocoder.getFromLocationName(location_d, 1);
+                        addressList_pick = geocoder.getFromLocationName(location_p, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address address_des = addressList_des.get(0);
+                    LatLng DestlatLng = new LatLng(address_des.getLatitude(), address_des.getLongitude());
+
+                    Address address_pic = addressList_pick.get(0);
+                    LatLng PicklatLng = new LatLng(address_pic.getLatitude(), address_pic.getLongitude());
+
+//            double latitude = 18.370955;
+//            double longitude = -100.679940;
+//
+//            // crear marker
+                    MarkerOptions marker = new MarkerOptions().position(DestlatLng).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+                    marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+                    googleMap.addMarker(marker);
+
+                    MarkerOptions marker1 = new MarkerOptions().position(PicklatLng).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+                    marker1.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+                    googleMap.addMarker(marker1);
+
+                    cameraPosition = new CameraPosition.Builder()
+                            .target(DestlatLng)              // Sets the center of the map to ZINTUN
+                            .zoom(17)                  // 缩放比例
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(30)                  // Sets the tilt of the camera to 30 degrees
+                            .build();                  // Creates a CameraPosition from the builder
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
+            /*
+            // ROSE color icon
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+
+            // GREEN color icon
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            */
+
+//            double latitude = 18.370955;
+//            double longitude = -100.679940;
+//
+//            // crear marker
+//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+//            googleMap.addMarker(marker);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 /*
                 setContentView(R.layout.passenger_ui);
 
@@ -323,6 +431,52 @@ public class Passenger_ui extends Activity {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initializeMap();
+    }
+
+
+    private void initializeMap() {
+        if (googleMap == null) {
+            googleMap = ((com.google.android.gms.maps.MapFragment) getFragmentManager().findFragmentById(
+                    R.id.map_passenger_ui)).getMap();
+
+            // revisa si el mapa se ha creado o no
+            if (googleMap == null) {
+                Toast.makeText(getApplicationContext(),
+                        "Lo siento! No se puede cargar el mapa", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     class ScheduleCmp implements Comparator<Schedule>
     {

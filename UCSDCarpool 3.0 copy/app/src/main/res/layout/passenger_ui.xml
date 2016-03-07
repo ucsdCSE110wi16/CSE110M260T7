@@ -39,7 +39,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="350dp"
             android:background="@color/background"
             android:layout_margin="5dp"
             android:padding="10dp">
@@ -105,7 +105,16 @@
                 android:text="null"
                 android:layout_marginLeft="10dp" />
 
-
+            <fragment
+                class="com.google.android.gms.maps.MapFragment"
+                android:id="@+id/map_passenger_ui"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
 
         </RelativeLayout>
