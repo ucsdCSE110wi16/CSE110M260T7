@@ -2,6 +2,8 @@ package com.example.jem.ucsdcarpool;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +17,14 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -78,16 +85,39 @@ public class Find_schedule_driver_Display extends Activity{
             // GREEN color icon
             marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
             */
+            String location_d = Find_schedule_driver_adaptor.driver.getDestination();
+            String location_p = Find_schedule_driver_adaptor.driver.getPick_loc();
+            List<Address> addressList_des = null;
+            List<Address> addressList_pick = null;
+
+            Geocoder geocoder = new Geocoder(Find_schedule_driver_Display.this);
+            try {
+                addressList_des = geocoder.getFromLocationName(location_d, 1);
+                addressList_pick = geocoder.getFromLocationName(location_p, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address address_des = addressList_des.get(0);
+            LatLng DestlatLng = new LatLng(address_des.getLatitude(), address_des.getLongitude());
+
+            Address address_pic = addressList_pick.get(0);
+            LatLng PicklatLng = new LatLng(address_des.getLatitude(), address_des.getLongitude());
 
 //            double latitude = 18.370955;
 //            double longitude = -100.679940;
 //
 //            // crear marker
-//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
+            MarkerOptions marker = new MarkerOptions().position(DestlatLng).title("Instituto Tecnologico de Cd. Altamirano");
 //            // cambiar color marcardor
-//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 //            // agregar marker
-//            googleMap.addMarker(marker);
+            googleMap.addMarker(marker);
+
+            MarkerOptions marker1 = new MarkerOptions().position(PicklatLng).title("Instituto Tecnologico de Cd. Altamirano");
+//            // cambiar color marcardor
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//            // agregar marker
+            googleMap.addMarker(marker);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />d
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
@@ -119,8 +119,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD4zqoer5Ub6HvlGicceVPzbf50PmsKycM"/>
-            <!--android:value="AIzaSyDBJ3FzLcIgYw8PDXp4j9-YsLspLTGxmKs"/> -->
+            android:value="AIzaSyC8_PHyR8MdojCx0SYtCUJuS1xHalp0u_A"/>
+            <!-- android:value="AIzaSyD4zqoer5Ub6HvlGicceVPzbf50PmsKycM"/>  Tianyi's-->
+            <!--android:value="AIzaSyDBJ3FzLcIgYw8PDXp4j9-YsLspLTGxmKs"/>   Fujie's-->
+
     </application>
 
 </manifest>
