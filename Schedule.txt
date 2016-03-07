@@ -1,4 +1,11 @@
 Schedule: 
+Updated 3/7
+
+Finished Everything!!   but it doesn't work on SDK16 because some google api(GMS). 
+Uploaded test files.
+
+
+
 
 Updated 3/6
 Finish everything with some of test files. we will upload all the test file before Monday demo.
