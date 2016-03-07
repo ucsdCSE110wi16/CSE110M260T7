@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Confirm"
-                android:background="#87cefa"
+                android:background="#90CAF9"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -69,7 +69,7 @@
                 android:layout_height="40dp"
                 android:text="Submit"
                 android:id="@+id/button_save"
-                android:background="#87cefa"
+                android:background="#90CAF9"
                 android:layout_below="@+id/search"
                 android:layout_alignLeft="@+id/search"
                 android:layout_alignStart="@+id/search"
@@ -126,7 +126,7 @@
 
             <Button
                 android:id="@+id/btn_setDate"
-                android:background="#87cefa"
+                android:background="#90CAF9"
                 android:layout_marginLeft="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
 
             <Button
                 android:id="@+id/btn_setTime"
-                android:background="#87cefa"
+                android:background="#90CAF9"
                 android:layout_marginLeft="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

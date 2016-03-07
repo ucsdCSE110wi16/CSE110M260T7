@@ -36,7 +36,7 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="40dp"
-        android:background="#FF80AB"
+        android:background="#F8BBD0"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:text="Delete"

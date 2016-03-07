@@ -14,7 +14,7 @@
         android:id="@+id/line1">
 
         <Button
-            android:background="#FF80AB"
+            android:background="#F8BBD0"
             android:id="@+id/back_find_schedule_driver"
             android:layout_width="78dp"
             android:layout_height="wrap_content"

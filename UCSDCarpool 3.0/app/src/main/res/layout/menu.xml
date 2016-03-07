@@ -1,38 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/home_profile"
-        android:background="#87cefa"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"/>
-    <Button
-        android:id="@+id/home_Find_Schedule"
-        android:background="#87cefa"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Customer-Arrange Carpool"/>
-    <Button
-        android:id="@+id/home_main"
-        android:background="#87cefa"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"/>
-    <Button
-        android:id="@+id/home_Find_Schedule_Driver"
-        android:background="#87cefa"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Driver-Find Carpool"/>
+
+        <Button
+            android:id="@+id/home_profile"
+            android:background="#F8BBD0"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textSize="30dp"
+            android:text="Profile"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/home_main"
+            android:background="#00ACC1"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textSize="30dp"
+
+            android:text="Home"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/home_Find_Schedule_Driver"
+            android:background="#87cefa"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textSize="30dp"
+            android:text="Driver-Find" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/home_Find_Schedule"
+            android:background="#B39DDB"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textSize="30dp"
+            android:text="Customer-Arrange"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/home_Log_Out"
+            android:background="#F8BBD0"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textSize="30dp"
+            android:text="Log out"/>
+    </LinearLayout>
+
+
+
+
 </LinearLayout>
