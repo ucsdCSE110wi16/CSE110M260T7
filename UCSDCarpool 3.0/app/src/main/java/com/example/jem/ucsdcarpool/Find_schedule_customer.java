@@ -1,5 +1,6 @@
 package com.example.jem.ucsdcarpool;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -21,7 +22,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
-import android.support.v4.app.FragmentActivity;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,8 +33,34 @@ import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.util.Iterator;
+import java.util.Vector;
+
 import java.io.IOException;
 import java.util.List;
+
+
+
 
 /**
  * Created by Jem on 3/2/16.
@@ -47,7 +73,6 @@ public class Find_schedule_customer extends FragmentActivity {
     private Firebase mRef;
     private GoogleMap googleMap;
     private CameraPosition cameraPosition;
-
 
 
     @Override
@@ -165,7 +190,7 @@ public class Find_schedule_customer extends FragmentActivity {
 
 
         // ========== test for save
-        Button buttonSave = (Button)findViewById(R.id.button_save);
+        Button buttonSave = (Button) findViewById(R.id.button_save);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,7 +209,7 @@ public class Find_schedule_customer extends FragmentActivity {
                 // }
                 String line2 = vew2.getText().toString();
 
-                 System.out.println("String :***" + line2 + "***");
+                System.out.println("String :***" + line2 + "***");
                 System.out.println("String :***" + line + "***");
 
                 if (line != null && line2 != null) {
@@ -312,6 +337,9 @@ public class Find_schedule_customer extends FragmentActivity {
         Button buttonSetTime = (Button) findViewById(R.id.btn_setTime);
 
         Button buttonSetDate = (Button) findViewById(R.id.btn_setDate);
+
+        Button buttonBack = (Button) findViewById(R.id.btn_back);
+
         buttonSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -330,12 +358,18 @@ public class Find_schedule_customer extends FragmentActivity {
 
             }
         });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(Find_schedule_customer.this, Menu.class);
+                startActivity(intent);
 
-
-
+            }
+        });
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();

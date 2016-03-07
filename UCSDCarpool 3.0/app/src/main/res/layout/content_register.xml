@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_marginTop="20dp"
     android:layout_marginLeft="20dp"
@@ -49,7 +50,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:background="#87cefa"
+            android:background="#90CAF9"
             android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="65dp"
@@ -59,7 +60,7 @@
             android:id="@+id/register" />
 
         <Button
-            android:background="#87cefa"
+            android:background="#90CAF9"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"

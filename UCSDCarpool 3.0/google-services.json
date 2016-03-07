@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_id": "ucsdcarpool-c7d9b",
-    "project_number": "835350983579",
-    "name": "ucsdCarpool"
+    "project_id": "default-demo-app-e0d7a",
+    "project_number": "959876430218",
+    "name": "Default Demo App"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:835350983579:android:3fd3c0cccf9c03be",
+        "mobilesdk_app_id": "1:959876430218:android:3fd3c0cccf9c03be",
         "client_id": "android:com.example.jem.ucsdcarpool",
         "client_type": 1,
         "android_client_info": {
@@ -17,15 +17,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "835350983579-d7o0phlupvqhbj6r3imf6no2nbi7k0mo.apps.googleusercontent.com",
+          "client_id": "959876430218-fkgnc1dd5ph5aha5vg6mo9js7k9qlb0e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.jem.ucsdcarpool",
-            "certificate_hash": "21DAC517BEC4D5F173FDAE6B9ECB9090901DD5DD"
+            "certificate_hash": "F929BB99CC8634B0DAADE94FCE990F2C95FAF9D9"
           }
         },
         {
-          "client_id": "835350983579-e5rtpoc0q5kmeuin2nqen1qigdft7lrc.apps.googleusercontent.com",
+          "client_id": "959876430218-vf935j9g706gqh01e6sc1p77jhdmad1d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
           "status": 1
         },
         "cloud_messaging_service": {
-          "status": 2,
+          "status": 1,
           "apns_config": []
         },
         "appinvite_service": {

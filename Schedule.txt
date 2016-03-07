@@ -1,4 +1,8 @@
 Schedule: 
+
+Updated 3/6
+Finish everything with some of test files. we will upload all the test file before Monday demo.
+
 Updated 2/29
 Things left: 
   Debug: App crashed when using map sometimes. 
