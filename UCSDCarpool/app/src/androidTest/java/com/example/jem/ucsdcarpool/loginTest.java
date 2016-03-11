@@ -22,9 +22,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 
-//@Rule
-//public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
-
 @RunWith(AndroidJUnit4.class)
 
 public class loginTest{
@@ -46,13 +43,9 @@ public class loginTest{
         onView(withId(R.id.quit))
                 .perform(click());
 
-        // intent successfully
-        //
+
         onView(withId(R.id.starMarkInput)).check(matches(isDisplayed()));
 
 
-        // onView(withId(R.id.register))
-        //         .perform(click()).check(matches(isDisplayed()));
-        //  onView(withId(R.id.home_profile)).check(matches(isDisplayed()));
     }
 }
