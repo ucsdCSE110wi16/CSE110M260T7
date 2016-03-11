@@ -52,11 +52,6 @@ public class driver_Test {
         onView(withId(R.id.user_color_update_driver)).check(matches(withText("fj@fj.com")));
 
 
-        //TODO: add two button!!!
-
-
-        //button save clicked
-
         //button reset
         onView(withId(R.id.driver_reset))
                 .perform(click()).check(matches(isDisplayed()));

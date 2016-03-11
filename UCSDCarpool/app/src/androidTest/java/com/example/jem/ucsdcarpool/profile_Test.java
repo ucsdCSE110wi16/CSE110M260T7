@@ -1,6 +1,4 @@
 package com.example.jem.ucsdcarpool;
-
-
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -23,39 +21,29 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 
-public class RegisterTest {
+public class profile_Test {
     @ClassRule
     public static DisableAnimationsRule disableAnimation;
 
     @Rule
-    public ActivityTestRule<Register> registerrule = new ActivityTestRule<>(Register.class);
+    public ActivityTestRule<Profile> registerrule = new ActivityTestRule<>(Profile.class);
 
 
     @Test
     public void RegisterAcitityTest() {
-        onView(withId(R.id.user_name))
+        //test
+        onView(withId(R.id.user_name_update_custom))
                 .perform(typeText("fjfjfj"), closeSoftKeyboard());
-        onView(withId(R.id.user_password))
+        onView(withId(R.id.user_ID_update_custom))
                 .perform(typeText("fj"), closeSoftKeyboard());
-        onView(withId(R.id.user_email))
+        onView(withId(R.id.user_email_update_custom))
                 .perform(typeText("fj@fj.com"), closeSoftKeyboard());
-        //onView(withId(R.id.register))
-        //        .perform(click()).check(matches(isDisplayed()));
-        //onView(withId(R.id.reset))
-        //        .perform(click()).check(matches(isDisplayed()));
-        onView(withId(R.id.user_name)).check(matches(withText("fjfjfj")));
-        onView(withId(R.id.user_password)).check(matches(withText("fj")));
-        onView(withId(R.id.user_email)).check(matches(withText("fj@fj.com")));
+        //checktest
+        onView(withId(R.id.user_name_update_custom)).check(matches(withText("fjfjfj")));
+        onView(withId(R.id.user_ID_update_custom)).check(matches(withText("fj")));
+        onView(withId(R.id.user_email_update_custom)).check(matches(withText("fj@fj.com")));
 
-        onView(withId(R.id.reset))
-                .perform(click()).check(matches(isDisplayed()));
-
-        onView(withId(R.id.user_name)).check(matches(withText("")));
-        onView(withId(R.id.user_password)).check(matches(withText("")));
-        onView(withId(R.id.user_email)).check(matches(withText("")));
-
-        onView(withId(R.id.register))
-                .perform(click()).check(matches(isDisplayed()));
-
+        onView(withId(R.id.todriver)).perform(click());
+        onView(withId(R.id.user_driverlicense_update_driver)).check(matches(isDisplayed()));
     }
 }
