@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:id="@+id/basicprofile"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:background="#F8BBD0"
+                    android:id="@+id/back_basic"
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:text="Back"/>
+
+                <Button
+                    android:background="#FF80AB"
+                    android:id="@+id/todriver"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Additional info. for driver"
+                    android:layout_weight="0.7"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/basic_profile_for_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic Profile"
+                android:textSize="30sp"
+                android:padding="15dp"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:id="@+id/user_name_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="*Name" />
+
+            <EditText
+                android:id="@+id/user_ID_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="*ID" />
+
+            <EditText
+                android:id="@+id/user_email_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="*E-mail" />
+
+            <EditText
+                android:id="@+id/user_gender_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="*Gender"/>
+
+            <EditText
+                android:id="@+id/user_ssn_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="SSN"/>
+
+            <EditText
+                android:id="@+id/user_address_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Address"/>
+
+            <EditText
+                android:id="@+id/user_phone_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Phone"/>
+
+            <EditText
+                android:id="@+id/user_zipcode_update_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Zipcode"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:background="#87cefa"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:id="@+id/Basic_save" />
+                <Button
+                    android:background="#87cefa"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:id="@+id/Basic_reset" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

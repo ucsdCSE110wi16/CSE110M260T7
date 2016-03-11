@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView1">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+
+        tools:context="com.example.jem.ucsdcarpool.passenger_ui">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back_passenger_ui"
+                android:background="#F8BBD0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="Back"/>
+            <TextView
+                android:id="@+id/next_trip_for_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="YOUR NEXT TRIP"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="40px" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@color/background"
+            android:layout_margin="5dp"
+            android:padding="10dp">
+            <!--Display date & time-->
+            <TextView
+                android:id="@+id/text0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: "
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/HomePageDatenull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/text0"
+                android:text="null"
+                android:layout_marginLeft="10dp" />
+            <TextView
+                android:id="@+id/text00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: "
+                android:textColor="@color/colorPrimary"
+                android:layout_toRightOf="@+id/HomePageDatenull" />
+            <TextView
+                android:id="@+id/FIREBASE_Time_null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toRightOf="@+id/text00"/>
+
+
+            <!--destination-->
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text0"
+                android:text="Your Destination:"
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/FIREBASE_destination_null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text0"
+                android:layout_toRightOf="@+id/text1"
+                android:text="null"
+                android:layout_marginLeft="10dp" />
+            <!--Pickup location-->
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:text="Pickup Location: "
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/FIREBASE_pickup_null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:layout_toRightOf="@+id/text2"
+                android:text="null"
+                android:layout_marginLeft="10dp" />
+
+            <fragment
+                class="com.google.android.gms.maps.MapFragment"
+                android:id="@+id/map_passenger_ui"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIEW MORE TRIPS"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40px"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_horizontal"
+            android:background="@color/background"
+            android:padding="10dp">
+            <ListView
+                android:id="@+id/HomeListView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </ListView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
