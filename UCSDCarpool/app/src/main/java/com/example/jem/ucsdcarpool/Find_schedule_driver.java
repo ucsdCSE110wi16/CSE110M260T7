@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Find_schedule_driver extends Activity {
 
+    // variables
     private Calendar calendar;
     private int month;
     private int day;
@@ -35,6 +36,7 @@ public class Find_schedule_driver extends Activity {
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
+    // create the view
     super.onCreate(savedInstanceState);
     setContentView(R.layout.find_schedule_driver);
 
@@ -42,13 +44,13 @@ protected void onCreate(Bundle savedInstanceState) {
     mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
 
     Button back = (Button) findViewById(R.id.back_find_schedule_driver);
-
+    // get time
     calendar = Calendar.getInstance();
 
     month = calendar.get(Calendar.MONTH) + 1;
     day = calendar.get(Calendar.DAY_OF_MONTH);
 
-
+    // setup back button listener
     back.setOnClickListener(new View.OnClickListener() {
 
         @Override
@@ -62,14 +64,18 @@ protected void onCreate(Bundle savedInstanceState) {
      * @TODO :ADD INFORMATION FROM DATABASE TO THE BELOW ARRAYLIST
      */
 
+    // update value to firebase
     Firebase findSche = mRef.child("schedules/schedule_id");
     final String user_uid = mRef.getAuth().getUid();
 
     findSche.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
+
+            // traverse firebase children
             for(DataSnapshot snap : dataSnapshot.getChildren())
             {
+                // check whether meet the save uid
                 String passenger_uid = snap.child("passenger_uid").getValue(String.class);
                 if(snap.child("schedule_taken").getValue().toString().equals("false") && snap.child("schedule_deleted").getValue().toString().equals("false"))
                 {
@@ -92,6 +98,7 @@ protected void onCreate(Bundle savedInstanceState) {
                         int minu = calendar.get(Calendar.MINUTE);
                         int hou = calendar.get(Calendar.HOUR);
 
+                        // check time
                         if(mon < month)
                         {
 

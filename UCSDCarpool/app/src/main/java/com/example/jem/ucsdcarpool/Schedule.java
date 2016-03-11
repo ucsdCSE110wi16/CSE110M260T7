@@ -1,12 +1,9 @@
 package com.example.jem.ucsdcarpool;
 
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
 public class Schedule {
+
+    // create all the variables
     private String passenger_name;
     private String driver_name;
     private String passenger_uid;
@@ -20,6 +17,7 @@ public class Schedule {
     private boolean taken;
     private boolean deleted;
 
+    // constructor
     public Schedule(String passenger_name, String driver_name, String passenger_uid, String driver_uid, String pick_loc, String destination, int day, int month, int hour, int minute) {
         this.passenger_name = passenger_name;
         this.driver_name = driver_name;
@@ -33,7 +31,7 @@ public class Schedule {
         this.minute = minute;
     }
 
-
+    // all geter and setter methods
     public String getPassenger_name() {
         return passenger_name;
     }

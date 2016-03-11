@@ -35,6 +35,8 @@ import java.util.Map;
  * Created by Jem on 3/2/16.
  */
 public class Find_schedule_customer extends FragmentActivity {
+
+    // the values
     private int selectedMinutes;
     private int selectedHour;
     private int selectedDay;
@@ -46,10 +48,12 @@ public class Find_schedule_customer extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        // create view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_schedule_customer);
         Firebase.setAndroidContext(this);
 
+        // setup google map
         try {
             initializeMap();
             // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -76,36 +80,21 @@ public class Find_schedule_customer extends FragmentActivity {
             // Mostrar / ocultar funcionalidad del zoom
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
 
-            /*
-            // ROSE color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-            // GREEN color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            */
-
-//            double latitude = 18.370955;
-//            double longitude = -100.679940;
-//
-//            // crear marker
-//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
-//            // cambiar color marcardor
-//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-//            // agregar marker
-//            googleMap.addMarker(marker);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // get the search button
         Button search = (Button) findViewById(R.id.search);
-//        textview1 = (TextView)findViewById(R.id.inputpickup);
-//        textview2 = (TextView)findViewById(R.id.inputdestination);
 
 
+        // setup search button listeener
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // get all the input locations
                 EditText location_des = (EditText) findViewById(R.id.inputdestination);
                 EditText location_pick = (EditText) findViewById(R.id.inputpickup);
                 String location_d = location_des.getText().toString();
@@ -113,6 +102,7 @@ public class Find_schedule_customer extends FragmentActivity {
                 List<Address> addressList_des = null;
                 List<Address> addressList_pick = null;
 
+                // when locations are not null, zoom in the location
                 if (location_d != null || !location_d.equals("")) {
                     Geocoder geocoder = new Geocoder(Find_schedule_customer.this);
                     try {
@@ -125,14 +115,14 @@ public class Find_schedule_customer extends FragmentActivity {
                     googleMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
                     cameraPosition = new CameraPosition.Builder()
                             .target(latLng)              // Sets the center of the map to ZINTUN
-                            .zoom(17)                  // 缩放比例
+                            .zoom(17)
                             .bearing(0)                // Sets the orientation of the camera to east
                             .tilt(30)                  // Sets the tilt of the camera to 30 degrees
                             .build();                  // Creates a CameraPosition from the builder
-//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
 
+                // when locations are not null, zoom in the location
                 if (location_p != null || !location_p.equals("")) {
                     Geocoder geocoder = new Geocoder(Find_schedule_customer.this);
                     try {
@@ -145,41 +135,34 @@ public class Find_schedule_customer extends FragmentActivity {
                     googleMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
                     cameraPosition = new CameraPosition.Builder()
                             .target(latLng)              // Sets the center of the map to ZINTUN
-                            .zoom(13)                  // 缩放比例
+                            .zoom(13)
                             .bearing(0)                // Sets the orientation of the camera to east
                             .tilt(30)                  // Sets the tilt of the camera to 30 degrees
                             .build();                  // Creates a CameraPosition from the builder
-//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
             }
         });
 
-//        googleMap.setOnMapClickListener(this);
 
 
         // ========== test for save
         Button buttonSave = (Button) findViewById(R.id.button_save);
 
+        // setup save button listener
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // get values of date
                 TextView vew = (TextView) findViewById(R.id.tv);
                 String line = vew.getText().toString();
-                //System.out.println("Line is: " + line);
-                //
-                //List receive = getInts(line);
+
                 getIntsToTime(line);
 
                 TextView vew2 = (TextView) findViewById(R.id.tv_date);
-                // if(vew2 == null)
-                // {
-                //     System.out.println("alallalallalal");
-                // }
-                String line2 = vew2.getText().toString();
 
-                System.out.println("String :***" + line2 + "***");
-                System.out.println("String :***" + line + "***");
+                String line2 = vew2.getText().toString();
 
                 if (line != null && line2 != null) {
                     getIntsToTime(line);
@@ -195,7 +178,7 @@ public class Find_schedule_customer extends FragmentActivity {
                     final EditText desti = (EditText) findViewById(R.id.inputdestination);
 
 
-                    //String customer_name = uRef.
+                    //String customer_name = uRef. add the value to firebase
                     uRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -203,12 +186,8 @@ public class Find_schedule_customer extends FragmentActivity {
 
                             boolean schedule_taken = false;
 
-                            System.out.println("Customer name: " + user_name);
-
                             final Firebase pushSche = new Firebase("https://ucsdcarpool.firebaseio.com/schedules/schedule_id");
 
-
-                            //pushSche.child("1").setValue(map);
 
                             pushSche.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -248,16 +227,9 @@ public class Find_schedule_customer extends FragmentActivity {
 
             }
 
+            // get date
             public void getIntsToDate(String str) {
-                //String temp = str.substring(str.indexOf("\n"));
-                //temp.replace("\n", "");
-                //String temp = str;
-                //  System.out.println("String :***" + temp + "***");
-                // temp.replaceAll(" 2016-", "");
-                //  System.out.println("String :***" + temp + "***");
-                //  System.out.println("String :***" + temp.substring(temp.indexOf('-') + 1, temp.lastIndexOf('-')) + "***");
-                // System.out.println("String :***" + temp.substring(temp.lastIndexOf('-') + 1,
-                //        temp.length()) + "***");
+
                 int index = 0;
                 for (int i = 0; i < str.length(); i++) {
                     if (str.charAt(i) == '-') {
@@ -273,14 +245,11 @@ public class Find_schedule_customer extends FragmentActivity {
                         break;
                     }
                 }
-                // System.out.println("test");
-                // selectedMonth = Integer.parseInt(temp.substring(temp.indexOf('-') + 1), temp.lastIndexOf('-'));
 
                 selectedDay = Integer.parseInt(str.substring(index, str.length()));
-                //  temp.length()));
-                //System.out.println("Time—— " + selectedMonth + " : " + selectedDay);
-            }
+                }
 
+            // get time
             public void getIntsToTime(String str) {
                 boolean foo = str.contains("PM");
                 String temp = str.substring(str.indexOf("\n"));
@@ -295,11 +264,7 @@ public class Find_schedule_customer extends FragmentActivity {
 
 
             }
-            //String temp = str.replaceAll("[^0-9]+", " ");
 
-            //return Arrays.asList(str.trim().split(" "));
-
-            //System.out.println("Line is: " + line);
         });
         //======
         //set activty content

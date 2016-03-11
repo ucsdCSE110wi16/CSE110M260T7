@@ -40,6 +40,8 @@ import java.util.concurrent.TimeUnit;
  * Created by Jem on 3/2/16.
  */
 public class Passenger_ui extends Activity {
+
+    // create variables
     private Firebase mRef;
     private ListView userList;
     private Passenger_ui_adaptor userAdapter;
@@ -54,16 +56,18 @@ public class Passenger_ui extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // create view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui);
         Firebase.setAndroidContext(this);
 
-
-
+        // initialize firebase reference
         mRef = new Firebase("https://ucsdcarpool.firebaseio.com/");
 
+        // get the back button
         Button back_passenger_ui = (Button) findViewById(R.id.back_passenger_ui);
 
+        // create back button listener
         back_passenger_ui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +76,13 @@ public class Passenger_ui extends Activity {
             }
         });
 
+        // get the time and date
         calendar = Calendar.getInstance();
 
         month = calendar.get(Calendar.MONTH) + 1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        // get all the edit texts
         final TextView homeDate = (TextView) findViewById(R.id.HomePageDatenull);
         final TextView homeTime = (TextView) findViewById(R.id.FIREBASE_Time_null);
         final TextView homeDest = (TextView) findViewById(R.id.FIREBASE_destination_null);
@@ -102,7 +108,9 @@ public class Passenger_ui extends Activity {
 
         final String uid = mRef.getAuth().getUid();
 
+        // get the schedule part of firebase
         Firebase firRef = mRef.child("schedules").child("schedule_id");
+        // update the schedule
         firRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -116,6 +124,7 @@ public class Passenger_ui extends Activity {
                         int minute = calendar.get(Calendar.MINUTE);
                         int hour = calendar.get(Calendar.HOUR);
 
+                        // check whether time is valid
                         if(mon < month)
                         {
 
@@ -179,6 +188,7 @@ public class Passenger_ui extends Activity {
 
                     }
 
+                    // check whether the schedule is valid
                     if (snap.child("schedule_taken").getValue(boolean.class) == true && snap.child("schedule_deleted").getValue(boolean.class) == false && snap.child("driver_uid").getValue(String.class).equals(uid)) {
                         int mon = snap.child("schedule_month").getValue(int.class);
                         int da = snap.child("schedule_day").getValue(int.class);
@@ -251,6 +261,7 @@ public class Passenger_ui extends Activity {
 
                 }
 
+                // update the user array and text
                 if (userArray.size() == 0) {
                     System.err.println("user array not set up, length is 0");
                 } else {
@@ -261,18 +272,12 @@ public class Passenger_ui extends Activity {
                     homePick.setText(userArray.get(0).getPick_loc());
                 }
 
+                // get the google map
                 try {
                     initializeMap();
-                    // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                    // googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
                     googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-                    // googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                    // googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 
-                    // Mostrar / ocultar tu ubicación
-//            googleMap.setMyLocationEnabled(true);
-
-                    // Mostrar / ocultar los controles del zoom
                     googleMap.getUiSettings().setZoomControlsEnabled(true);
 
                     // Mostrar / ocultar boton de localización
@@ -305,10 +310,6 @@ public class Passenger_ui extends Activity {
                     Address address_pic = addressList_pick.get(0);
                     LatLng PicklatLng = new LatLng(address_pic.getLatitude(), address_pic.getLongitude());
 
-//            double latitude = 18.370955;
-//            double longitude = -100.679940;
-//
-//            // crear marker
                     MarkerOptions marker = new MarkerOptions().position(DestlatLng).title("Instituto Tecnologico de Cd. Altamirano");
 //            // cambiar color marcardor
                     marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
@@ -323,7 +324,7 @@ public class Passenger_ui extends Activity {
 
                     cameraPosition = new CameraPosition.Builder()
                             .target(DestlatLng)              // Sets the center of the map to ZINTUN
-                            .zoom(17)                  // 缩放比例
+                            .zoom(17)
                             .bearing(0)                // Sets the orientation of the camera to east
                             .tilt(30)                  // Sets the tilt of the camera to 30 degrees
                             .build();                  // Creates a CameraPosition from the builder
@@ -331,35 +332,11 @@ public class Passenger_ui extends Activity {
                     googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
-            /*
-            // ROSE color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-            // GREEN color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            */
-
-//            double latitude = 18.370955;
-//            double longitude = -100.679940;
-//
-//            // crear marker
-//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
-//            // cambiar color marcardor
-//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-//            // agregar marker
-//            googleMap.addMarker(marker);
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                /*
-                setContentView(R.layout.passenger_ui);
 
-                userAdapter = new Passenger_ui_adaptor(Passenger_ui.this, R.layout.passenger_ui_listview_row, userArray);
-                userList = (ListView) findViewById(R.id.HomeListView);
-                userList.setItemsCanFocus(false);
-                userList.setAdapter(userAdapter);
-                */
             }
 
             @Override
@@ -481,6 +458,7 @@ public class Passenger_ui extends Activity {
     class ScheduleCmp implements Comparator<Schedule>
     {
 
+        // used to compare the schedule
         @Override
         public int compare(Schedule lhs, Schedule rhs) {
             if(lhs.getMonth() != rhs.getMonth())

@@ -30,8 +30,10 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
+    // create firebase reference
     private Firebase mRef;
 
+    // create view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
+        // get all the edittext and buttons
         final EditText user_name = (EditText) findViewById(R.id.user_name);
 
         final EditText user_pwd = (EditText) findViewById(R.id.user_password);
@@ -59,10 +62,12 @@ public class Register extends AppCompatActivity {
 
         Button reset = (Button) findViewById(R.id.reset);
 
+        // setup register listener
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // check whether user input are valid
                 if(user_email.getText().toString().equals("") ||
                         user_pwd.getText().toString().equals("") ||
                         user_name.getText().toString().equals(""))
@@ -71,11 +76,13 @@ public class Register extends AppCompatActivity {
                     CharSequence text = "Please fill in all required information!";
                     int duration = Toast.LENGTH_SHORT;
 
-
+                    // when not valid popup notification
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
                     toast.show();
                 }else {
+
+                    // create user by using firebase
                     mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
 
                     final String email = user_email.getText().toString();

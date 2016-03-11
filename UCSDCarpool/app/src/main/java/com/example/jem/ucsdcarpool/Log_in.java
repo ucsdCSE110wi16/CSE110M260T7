@@ -23,25 +23,30 @@ import com.firebase.client.FirebaseError;
 
 public class Log_in extends AppCompatActivity {
 
+    // create firebase reference
     private Firebase mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // create the view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         Firebase.setAndroidContext(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // get all the text view and button
         final EditText user_name = (EditText) findViewById(R.id.user_name);
         final EditText pwd = (EditText) findViewById(R.id.pwd);
         final Button logIn = (Button) findViewById(R.id.login);
         final Button register = (Button) findViewById(R.id.quit);
 
+        // setup longin button listener
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // check whether user input is valid
                 if(user_name.getText().toString().equals("") ||
                         pwd.getText().toString().equals("") )
                 {
@@ -55,6 +60,7 @@ public class Log_in extends AppCompatActivity {
                     toast.show();
                 }else {
 
+                    // check whether user passward or email is valid
                     mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
                     final String email = user_name.getText().toString();
                     final String password = pwd.getText().toString();
@@ -70,6 +76,8 @@ public class Log_in extends AppCompatActivity {
 
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
+
+                            // when authentication failed, popup a notification
                             String errMag = firebaseError.getMessage();
                             Context context = getApplicationContext();
                             CharSequence text = errMag;
@@ -92,7 +100,7 @@ public class Log_in extends AppCompatActivity {
         });
 
 
-
+        // setup register button listener
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,6 +4,8 @@ package com.example.jem.ucsdcarpool;
  * Created by xiejingwen on 3/4/16.
  */
 public class ScheduleDriver{
+
+    // creat variables
     private String passenger_name;
     private String pick_loc;
     private String destination;
@@ -13,6 +15,7 @@ public class ScheduleDriver{
     private int hour;
     private int minute;
 
+    // constructor
     public ScheduleDriver(String passenger_name, int minute, String destination, String pick_loc, String passenger_uid, int day, int month, int hour) {
         this.passenger_name = passenger_name;
         this.minute = minute;
@@ -25,6 +28,7 @@ public class ScheduleDriver{
     }
 
 
+    // call getter and setter methods
     public String getPassenger_name() {
         return passenger_name;
     }

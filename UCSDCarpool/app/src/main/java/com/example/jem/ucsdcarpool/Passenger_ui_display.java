@@ -31,10 +31,12 @@ import java.util.List;
  * Created by xiejingwen on 3/5/16.
  */
 public class Passenger_ui_display extends FragmentActivity {
+    // create variables
     private Firebase mRef ;
     private GoogleMap googleMap;
     private CameraPosition cameraPosition;
 
+    // create view
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_ui_display);
@@ -42,11 +44,13 @@ public class Passenger_ui_display extends FragmentActivity {
         mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
         Button arrive = (Button) findViewById(R.id.arrive_back);
 
+        // get all the text
         TextView date = (TextView) findViewById(R.id.CarpoolInfo_Date);
         TextView time = (TextView) findViewById(R.id.FIREBASE_Time);
         TextView dest = (TextView) findViewById(R.id.FIREBASE_destination);
         TextView pick = (TextView) findViewById(R.id.FIREBASE_pickup);
 
+        // set text detail
         date.setText(Passenger_ui_adaptor.sche.getMonth() + " / " + Passenger_ui_adaptor.sche.getDay());
         time.setText(Passenger_ui_adaptor.sche.getHour() + " : " + Passenger_ui_adaptor.sche.getMinute());
         dest.setText(Passenger_ui_adaptor.sche.getDestination());
@@ -54,19 +58,12 @@ public class Passenger_ui_display extends FragmentActivity {
 
         final Button Back = (Button) findViewById(R.id.btnhomeBack);
 
-
+        // get map
         try {
             initializeMap();
-            // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            // googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
             googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-            // googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            // googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 
-            // Mostrar / ocultar tu ubicación
-//            googleMap.setMyLocationEnabled(true);
-
-            // Mostrar / ocultar los controles del zoom
             googleMap.getUiSettings().setZoomControlsEnabled(true);
 
             // Mostrar / ocultar boton de localización
@@ -99,9 +96,6 @@ public class Passenger_ui_display extends FragmentActivity {
             Address address_pic = addressList_pick.get(0);
             LatLng PicklatLng = new LatLng(address_pic.getLatitude(), address_pic.getLongitude());
 
-//            double latitude = 18.370955;
-//            double longitude = -100.679940;
-//
 //            // crear marker
             MarkerOptions marker = new MarkerOptions().position(DestlatLng).title("Instituto Tecnologico de Cd. Altamirano");
 //            // cambiar color marcardor
@@ -117,35 +111,19 @@ public class Passenger_ui_display extends FragmentActivity {
 
             cameraPosition = new CameraPosition.Builder()
                     .target(DestlatLng)              // Sets the center of the map to ZINTUN
-                    .zoom(17)                  // 缩放比例
+                    .zoom(17)
                     .bearing(0)                // Sets the orientation of the camera to east
                     .tilt(30)                  // Sets the tilt of the camera to 30 degrees
                     .build();                  // Creates a CameraPosition from the builder
 //                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-            /*
-            // ROSE color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-            // GREEN color icon
-            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            */
-
-//            double latitude = 18.370955;
-//            double longitude = -100.679940;
-//
-//            // crear marker
-//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Instituto Tecnologico de Cd. Altamirano");
-//            // cambiar color marcardor
-//            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-//            // agregar marker
-//            googleMap.addMarker(marker);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // setup back button listener
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +132,7 @@ public class Passenger_ui_display extends FragmentActivity {
             }
         });
 
+        // setup arrive button listener
         arrive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,6 +143,7 @@ public class Passenger_ui_display extends FragmentActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                            // check whether schedule match
                             if (snap.child("passenger_uid").getValue(String.class).equals(Passenger_ui_adaptor.sche.getPassenger_uid())) {
                                 if (snap.child("schedule_month").getValue(int.class).equals(Passenger_ui_adaptor.sche.getMonth())) {
                                     if (snap.child("schedule_day").getValue(int.class).equals(Passenger_ui_adaptor.sche.getDay())) {

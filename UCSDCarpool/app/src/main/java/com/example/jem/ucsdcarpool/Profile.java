@@ -19,13 +19,18 @@ import java.util.Map;
  * Created by yucheng on 2/28/16.
  */
 public class Profile extends AppCompatActivity {
+
+    // create firebase reference
     private Firebase mRef;
+
+    // create view
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         Firebase.setAndroidContext(this);
 
+        // get all the edittext and buttons
         final EditText name = (EditText) findViewById(R.id.user_name_update_custom);
         final EditText id = (EditText) findViewById(R.id.user_ID_update_custom);
         final EditText email = (EditText) findViewById(R.id.user_email_update_custom);
@@ -40,6 +45,7 @@ public class Profile extends AppCompatActivity {
         Button reset = (Button) findViewById(R.id.Basic_reset);
         Button back_basic = (Button) findViewById(R.id.back_basic);
 
+        // setup my button listener
         mybutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -49,9 +55,12 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        // setup save button listener
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // cehck whether all user input are valid
                 if(name.getText().toString().equals("") ||
                         id.getText().toString().equals("") ||
                         email.getText().toString().equals("")||
@@ -61,11 +70,13 @@ public class Profile extends AppCompatActivity {
                     CharSequence text = "Please fill in all required information!";
                     int duration = Toast.LENGTH_SHORT;
 
-
+                    // when not valid popup notification
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_VERTICAL, 10, 10);
                     toast.show();
                 }else {
+
+                    // put all user valid setting to firebase
                     mRef = new Firebase("https://ucsdcarpool.firebaseio.com");
                     final String na = name.getText().toString();
                     final String i = id.getText().toString();
@@ -94,7 +105,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-
+        // setup reset button listener
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +121,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        // setup back button listener
         back_basic.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
