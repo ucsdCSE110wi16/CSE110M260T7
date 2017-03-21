@@ -1,0 +1,21 @@
+package interview;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+	public static void main (String[] args){
+		ArrayList<Integer> input = new ArrayList<Integer>();
+		input.add(3);
+		input.add(3);
+		Solution solution = new Solution();
+		solution.here(input);
+		for (int re : input){
+			System.out.println(re);
+		}
+	}
+	
+    public void here(ArrayList<Integer> input){
+    	input.set(0, 1);
+    }
+}

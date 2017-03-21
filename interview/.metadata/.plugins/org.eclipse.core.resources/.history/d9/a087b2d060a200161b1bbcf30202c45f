@@ -1,0 +1,19 @@
+package interview;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+	public static void main (String[] args){
+		List<Integer> input = new List<Integer>();
+		
+		List<String> res = solution.try();
+		for (String re : res){
+			System.out.println(re);
+		}
+	}
+	
+    public List<String> try(List<String> input){
+    	
+    }
+}

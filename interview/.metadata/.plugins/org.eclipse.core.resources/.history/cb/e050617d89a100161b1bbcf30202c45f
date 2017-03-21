@@ -1,0 +1,57 @@
+package interview;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+	public static void main (String[] args){
+		Solution solution = new Solution();
+		List<String> res = solution.readBinaryWatch(1);
+		for (String re : res){
+			System.out.println(re);
+		}
+	}
+	
+    public List<String> readBinaryWatch(int num) {
+    	int hour = 0;
+    	int min = 0;
+        Combines(hour,min,num,0);
+		for (int[] combination : posComb){
+			for (int i:combination){
+				System.out.print(i+"--");
+				}
+			System.out.println("next");
+		}
+        List<String> res = new ArrayList<>();
+        for (int[] temp: posComb) {
+            if (temp[0]<12 && temp[1]<60) {
+                String s = temp[0] + ":" + temp[1];
+                res.add(s);
+            }
+        }
+        return res;
+    }
+    
+    public List<int[]> posComb = new ArrayList<>();
+    public int[] time = new int[] {8,4,2,1,32,16,8,4,2,1};
+    
+    public void Combines (int hour, int min, int count, int pos) {
+        if (pos>9) return;
+        if (count==0) {
+            posComb.add(new int[]{hour,min});
+            return;
+        }
+        
+        Combines(hour,min,count,pos+1);
+        if (pos<4) {
+            comb[0] += time[pos];
+            Combines(comb.clone(),count-1,pos+1);
+            comb[0] -= time[pos];
+        }
+        else {
+            comb[1] += time[pos];
+            Combines(comb.clone(),count-1,pos+1);
+            comb[1] -= time[pos];
+        }
+    }
+}
